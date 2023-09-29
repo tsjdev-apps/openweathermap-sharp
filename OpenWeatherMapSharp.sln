@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_src", "01_src", "{3B7190
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMapSharp.UnitTests", "tests\OpenWeatherMapSharp.UnitTests\OpenWeatherMapSharp.UnitTests.csproj", "{C46F491D-30CA-4058-90CD-541670E97F9A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_tests", "02_tests", "{CBF6C32E-EC02-4C1F-951B-6BD39F90C5A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{57797C13-7529-45EF-A850-A373AEBF28B1} = {3B71904C-765F-4134-8A8D-48A95091E32B}
+		{C46F491D-30CA-4058-90CD-541670E97F9A} = {CBF6C32E-EC02-4C1F-951B-6BD39F90C5A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9015A40-209B-4BC8-A44D-7B78FC79F65C}
