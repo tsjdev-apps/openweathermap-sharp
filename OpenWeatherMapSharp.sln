@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMapSharp.UnitTes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_tests", "02_tests", "{CBF6C32E-EC02-4C1F-951B-6BD39F90C5A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMapSharp.Console", "samples\OpenWeatherMapSharp.Console\OpenWeatherMapSharp.Console.csproj", "{104D7D8E-FF9D-420F-85AB-D04A8716B8F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{C46F491D-30CA-4058-90CD-541670E97F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C46F491D-30CA-4058-90CD-541670E97F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C46F491D-30CA-4058-90CD-541670E97F9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104D7D8E-FF9D-420F-85AB-D04A8716B8F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104D7D8E-FF9D-420F-85AB-D04A8716B8F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104D7D8E-FF9D-420F-85AB-D04A8716B8F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104D7D8E-FF9D-420F-85AB-D04A8716B8F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
