@@ -1,0 +1,57 @@
+﻿namespace OpenWeatherMapSharp.Models.Enums
+{
+    /// <summary>
+    ///     Supported languages
+    /// </summary>
+    public enum LanguageCode
+    {
+        EN,
+        AF,
+        AL,
+        AR,
+        AZ,
+        BG,
+        CA,
+        CZ,
+        DA,
+        DE,
+        EL,
+        EU,
+        FA,
+        FI,
+        FR,
+        GL,
+        HE,
+        HI,
+        HR,
+        HU,
+        ID,
+        IT,
+        JA,
+        KR,
+        LA,
+        LT,
+        MK,
+        NO,
+        NL,
+        PL,
+        PT,
+        PT_BR,
+        RO,
+        RU,
+        SV,
+        SE,
+        SL,
+        SP,
+        ES,
+        SR,
+        TH,
+        TR,
+        UA,
+        UK,
+        VI,
+        ZH_CN,
+        ZH_TW,
+        ZU
+    }
+}
