@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMapSharp", "src\OpenWeatherMapSharp\OpenWeatherMapSharp.csproj", "{57797C13-7529-45EF-A850-A373AEBF28B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMapSharp", "src\OpenWeatherMapSharp\OpenWeatherMapSharp.csproj", "{57797C13-7529-45EF-A850-A373AEBF28B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_src", "01_src", "{3B71904C-765F-4134-8A8D-48A95091E32B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{57797C13-7529-45EF-A850-A373AEBF28B1} = {3B71904C-765F-4134-8A8D-48A95091E32B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9015A40-209B-4BC8-A44D-7B78FC79F65C}
