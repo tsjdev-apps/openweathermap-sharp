@@ -11,4 +11,8 @@
     <PackageReference Include="Spectre.Console" Version="0.47.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\OpenWeatherMapSharp\OpenWeatherMapSharp.csproj" />
+  </ItemGroup>
+
 </Project>
