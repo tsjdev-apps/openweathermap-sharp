@@ -10,11 +10,11 @@ namespace OpenWeatherMapSharp.Utils
     {
         internal static async Task<OpenWeatherMapServiceResponse<TClass>> GetDataAsync<TClass>(string url) where TClass : class
         {
-            using (var client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    var json = await client.GetStringAsync(url);
+                    string json = await client.GetStringAsync(url);
 
                     if (string.IsNullOrWhiteSpace(json))
                     {

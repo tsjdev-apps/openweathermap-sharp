@@ -13,7 +13,7 @@ AnsiConsole.Write(headerGrid);
 
 // ASK FOR CITY NAME
 AnsiConsole.WriteLine();
-var cityName = AnsiConsole.Ask<string>("[white]Insert the name of the[/] [red]city[/]?");
+string cityName = AnsiConsole.Ask<string>("[white]Insert the name of the[/] [red]city[/]?");
 AnsiConsole.WriteLine();
 
 // GET WEATHER
@@ -53,7 +53,7 @@ if (weatherResponse.IsSuccess)
         new Markup($"[red]Sunrise: [/]{weatherRoot.System.Sunrise:g}"),
         new Markup($"[red]Sunset: [/]{weatherRoot.System.Sunset:g}")
     };
-    foreach (var weatherInfo in weatherRoot.WeatherInfos)
+    foreach (WeatherInfo weatherInfo in weatherRoot.WeatherInfos)
     {
         weatherMarkupList.Add(new Markup($"[red]Current Conditions: [/]{weatherInfo.Description}"));
     }

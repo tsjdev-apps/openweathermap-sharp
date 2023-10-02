@@ -29,7 +29,7 @@ namespace OpenWeatherMapSharp
             LanguageCode language = LanguageCode.EN,
             Unit unit = Unit.Standard)
         {
-            var url = string.Format(Statics.WeatherCoordinatesUri, latitude, longitude, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
+            string url = string.Format(Statics.WeatherCoordinatesUri, latitude, longitude, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
             return await HttpService.GetDataAsync<WeatherRoot>(url);
         }
 
@@ -40,7 +40,7 @@ namespace OpenWeatherMapSharp
             LanguageCode language = LanguageCode.EN,
             Unit unit = Unit.Standard)
         {
-            var url = string.Format(Statics.WeatherCityUri, city, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
+            string url = string.Format(Statics.WeatherCityUri, city, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
             return await HttpService.GetDataAsync<WeatherRoot>(url);
         }
 
@@ -51,7 +51,7 @@ namespace OpenWeatherMapSharp
             LanguageCode language = LanguageCode.EN,
             Unit unit = Unit.Standard)
         {
-            var url = string.Format(Statics.WeatherIdUri, cityId, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
+            string url = string.Format(Statics.WeatherIdUri, cityId, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
             return await HttpService.GetDataAsync<WeatherRoot>(url);
         }
 
@@ -62,7 +62,7 @@ namespace OpenWeatherMapSharp
             LanguageCode language = LanguageCode.EN,
             Unit unit = Unit.Standard)
         {
-            var url = string.Format(Statics.ForecastCoordinatesUri, latitude, longitude, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
+            string url = string.Format(Statics.ForecastCoordinatesUri, latitude, longitude, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
             return await HttpService.GetDataAsync<ForecastRoot>(url);
         }
 
@@ -73,7 +73,7 @@ namespace OpenWeatherMapSharp
             LanguageCode language = LanguageCode.EN,
             Unit unit = Unit.Standard)
         {
-            var url = string.Format(Statics.ForecastCityUri, city, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
+            string url = string.Format(Statics.ForecastCityUri, city, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
             return await HttpService.GetDataAsync<ForecastRoot>(url);
         }
 
@@ -84,7 +84,7 @@ namespace OpenWeatherMapSharp
             LanguageCode language = LanguageCode.EN,
             Unit unit = Unit.Standard)
         {
-            var url = string.Format(Statics.ForecastIdUri, id, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
+            string url = string.Format(Statics.ForecastIdUri, id, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
             return await HttpService.GetDataAsync<ForecastRoot>(url);
         }
     }
