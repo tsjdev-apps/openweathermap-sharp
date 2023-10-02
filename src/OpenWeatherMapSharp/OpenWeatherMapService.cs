@@ -2,6 +2,7 @@
 using OpenWeatherMapSharp.Models.Enums;
 using OpenWeatherMapSharp.Utils;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace OpenWeatherMapSharp
@@ -86,6 +87,27 @@ namespace OpenWeatherMapSharp
         {
             string url = string.Format(Statics.ForecastIdUri, id, unit.ToString().ToLower(), language.ToString().ToLower(), _apiKey);
             return await HttpService.GetDataAsync<ForecastRoot>(url);
+        }
+
+        /// <inheritdoc/>
+        public async Task<OpenWeatherMapServiceResponse<List<GeocodeInfo>>> GetLocationByNameAsync(string query, int limit = 5)
+        {
+            string url = string.Format(Statics.GeocodeLocationUri, query, limit, _apiKey);
+            return await HttpService.GetDataAsync<List<GeocodeInfo>>(url);
+        }
+
+        /// <inheritdoc/>
+        public async Task<OpenWeatherMapServiceResponse<GeocodeZipInfo>> GetLocationByZipAsync(string zipCode)
+        {
+            string url = string.Format(Statics.GeocodeZipUri, zipCode, _apiKey);
+            return await HttpService.GetDataAsync<GeocodeZipInfo>(url);
+        }
+
+        /// <inheritdoc/>
+        public async Task<OpenWeatherMapServiceResponse<List<GeocodeInfo>>> GetLocationByLatLonAsync(double latitude, double longitude, int limit = 5)
+        {
+            string url = string.Format(Statics.GeocodeReverseUri, latitude, longitude, limit, _apiKey);
+            return await HttpService.GetDataAsync<List<GeocodeInfo>>(url);
         }
     }
 }

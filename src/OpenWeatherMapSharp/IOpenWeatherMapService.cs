@@ -1,6 +1,7 @@
 ﻿using OpenWeatherMapSharp.Models;
 using OpenWeatherMapSharp.Models.Enums;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace OpenWeatherMapSharp
@@ -65,7 +66,7 @@ namespace OpenWeatherMapSharp
             Unit unit = Unit.Standard);
 
         /// <summary>
-        /// Gets weather information for a location given its city ID
+        ///     Gets weather information for a location given its city ID
         /// </summary>
         /// <param name="cityId">The ID of the location's city</param>
         /// <param name="language">The language used for the response</param>
@@ -78,7 +79,7 @@ namespace OpenWeatherMapSharp
             Unit unit = Unit.Standard);
 
         /// <summary>
-        /// Gets weather information for a location given its city name
+        ///     Gets weather information for a location given its city name
         /// </summary>
         /// <param name="city">The name of the location's city</param>
         /// <param name="language">The language used for the response</param>
@@ -89,5 +90,36 @@ namespace OpenWeatherMapSharp
             string city,
             LanguageCode language = LanguageCode.EN,
             Unit unit = Unit.Standard);
+
+
+        /// <summary>
+        ///     Gets a list of locations given a query string
+        /// </summary>
+        /// <param name="query">The query string to search for</param>
+        /// <param name="limit">The maximum number of locations to return</param>
+        /// <returns>The OpenWeatherMapServiceResponse containing the list of relevant locations</returns>
+        Task<OpenWeatherMapServiceResponse<List<GeocodeInfo>>> GetLocationByNameAsync(
+            string query,
+            int limit = 5);
+
+        /// <summary>
+        ///     Gets location information for a given zip code
+        /// </summary>
+        /// <param name="zipCode">The zip code to search for</param>
+        /// <returns>The OpenWeatherMapServiceResponse containing the location information</returns>
+        Task<OpenWeatherMapServiceResponse<GeocodeZipInfo>> GetLocationByZipAsync(
+            string zipCode);
+
+        /// <summary>
+        ///     Gets location information for a given latitude and longitude
+        /// </summary>
+        /// <param name="latitude">The latitude of the location</param>
+        /// <param name="longitude">The longitude of the location</param>
+        /// <param name="limit">The maximum number of locations to return</param>
+        /// <returns>The OpenWeatherMapServiceResponse containing the location information</returns>
+        Task<OpenWeatherMapServiceResponse<List<GeocodeInfo>>> GetLocationByLatLonAsync(
+            double latitude,
+            double longitude,
+            int limit = 5);
     }
 }
