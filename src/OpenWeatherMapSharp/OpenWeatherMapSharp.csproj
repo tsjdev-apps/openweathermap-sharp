@@ -1,29 +1,41 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	  <TargetFramework>netstandard2.0</TargetFramework>
-	  <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-	  <Title>OpenWeatherMapSharp</Title>
-	  <Version>3.0.0</Version>
-	  <Authors>Thomas Sebastian Jensen</Authors>
-	  <Company>tsjdev-apps.de</Company>
-	  <Description>An unofficial .NET API wrapper for OpenWeatherMap.org</Description>
-	  <Copyright>© Thomas Sebastian Jensen | 2017-2023</Copyright>
-	  <PackageProjectUrl>https://github.com/tsjdev-apps/openweathermap-sharp</PackageProjectUrl>
-	  <RepositoryUrl>https://github.com/tsjdev-apps/openweathermap-sharp</RepositoryUrl>
-	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <PackageTags>OpenWeatherMap; Api; Mock; Wrapper; free; Weather</PackageTags>
-	  <PackageReleaseNotes>
-		  - Update to .NET Standard 2.0
-		  - Add more calls for current weather and forecast
-		  - Mark some methods as obsolete
-		  - Code improvements
-	  </PackageReleaseNotes>
-	  <NeutralLanguage>en</NeutralLanguage>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Title>OpenWeatherMapSharp</Title>
+		<Version>3.1.0</Version>
+		<Authors>Thomas Sebastian Jensen</Authors>
+		<Company>tsjdev-apps.de</Company>
+		<Description>An unofficial .NET API wrapper for OpenWeatherMap.org</Description>
+		<Copyright>© Thomas Sebastian Jensen | 2017-2023</Copyright>
+		<PackageProjectUrl>https://github.com/tsjdev-apps/openweathermap-sharp</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/tsjdev-apps/openweathermap-sharp</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>Assets\icon.png</PackageIcon>
+		<PackageTags>OpenWeatherMap; Api; Mock; Wrapper; free; Weather</PackageTags>
+		<PackageReleaseNotes>
+			- New API endpoints to get the geolocation by name, zip code or latitude/longitude
+			- Code improvements
+		</PackageReleaseNotes>
+		<NeutralLanguage>en</NeutralLanguage>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="Assets\icon.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Assets\icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>
