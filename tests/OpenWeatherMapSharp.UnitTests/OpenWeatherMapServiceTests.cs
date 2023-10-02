@@ -138,4 +138,75 @@ public class OpenWeatherMapServiceTests
         Assert.True(serviceResponse.IsSuccess);
         Assert.Equal(serviceResponse.Response.City.Name, cityName);
     }
+
+
+    [Fact]
+    public async Task GetGeolocationFromNameTest()
+    {
+        // arrange
+        OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
+        string name = "Pforzheim";
+        string country = "DE";
+
+        // act
+        OpenWeatherMapServiceResponse<List<GeocodeInfo>> serviceResponse = await service.GetLocationByNameAsync(name);
+
+        // assert
+        Assert.NotNull(serviceResponse);
+        Assert.NotNull(serviceResponse.Response);
+        Assert.Null(serviceResponse.Error);
+        Assert.True(serviceResponse.IsSuccess);
+
+        GeocodeInfo? firstCountry = serviceResponse.Response.FirstOrDefault();
+        Assert.NotNull(firstCountry);
+        Assert.Equal(name, firstCountry.Name);
+        Assert.Equal(country, firstCountry.Country);
+    }
+
+    [Fact]
+    public async Task GetGeolocationFromZipTest()
+    {
+        // arrange
+        OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
+        string zipCode = "75173";
+        string cityName = "Pforzheim";
+        string country = "DE";
+
+        // act
+        OpenWeatherMapServiceResponse<GeocodeZipInfo> serviceResponse = await service.GetLocationByZipAsync($"{zipCode},{country}");
+
+        // assert
+        Assert.NotNull(serviceResponse);
+        Assert.NotNull(serviceResponse.Response);
+        Assert.Null(serviceResponse.Error);
+        Assert.True(serviceResponse.IsSuccess);
+        Assert.Equal(zipCode, serviceResponse.Response.ZipCode);
+        Assert.Equal(cityName, serviceResponse.Response.Name);
+        Assert.Equal(country, serviceResponse.Response.Country);
+    }
+
+    [Fact]
+    public async Task GetGeolocationFromLatLonTest()
+    {
+        // arrange
+        OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
+        double latitude = 48.89;
+        double longitude = 8.69;
+        string cityName = "Pforzheim";
+        string country = "DE";
+
+        // act
+        OpenWeatherMapServiceResponse<List<GeocodeInfo>> serviceResponse = await service.GetLocationByLatLonAsync(latitude, longitude);
+
+        // assert
+        Assert.NotNull(serviceResponse);
+        Assert.NotNull(serviceResponse.Response);
+        Assert.Null(serviceResponse.Error);
+        Assert.True(serviceResponse.IsSuccess);
+
+        GeocodeInfo? firstCountry = serviceResponse.Response.FirstOrDefault();
+        Assert.NotNull(firstCountry);
+        Assert.Equal(cityName, firstCountry.Name);
+        Assert.Equal(country, firstCountry.Country);
+    }
 }
