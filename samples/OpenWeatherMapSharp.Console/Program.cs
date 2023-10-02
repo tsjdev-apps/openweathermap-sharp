@@ -13,12 +13,31 @@ AnsiConsole.Write(headerGrid);
 
 // ASK FOR CITY NAME
 AnsiConsole.WriteLine();
-string cityName = AnsiConsole.Ask<string>("[white]Insert the name of the[/] [red]city[/]?");
+string cityName = AnsiConsole.Ask<string>("[white]Insert the name of the[/] [red]city[/][white]?[/]");
 AnsiConsole.WriteLine();
 
 // GET WEATHER
 OpenWeatherMapService openWeatherMapService = new(openWeatherMapApiKey);
-OpenWeatherMapServiceResponse<WeatherRoot> weatherResponse = await openWeatherMapService.GetWeatherAsync(cityName, unit: Unit.Metric);
+var geolocationResponse = await openWeatherMapService.GetLocationByNameAsync(cityName);
+
+if (!geolocationResponse.IsSuccess)
+{
+    AnsiConsole.Write("Unfortunately I can't recognize the city. Please try again.");
+    Console.WriteLine();
+    return;
+}
+
+var geolocations = geolocationResponse.Response;
+var geolocation = geolocations.FirstOrDefault();
+
+if (geolocation is null)
+{
+    AnsiConsole.Write("Unfortunately I can't recognize the city. Please try again.");
+    Console.WriteLine();
+    return;
+}
+
+OpenWeatherMapServiceResponse<WeatherRoot> weatherResponse = await openWeatherMapService.GetWeatherAsync(geolocation.Latitude, geolocation.Longitude, unit: Unit.Metric);
 
 if (weatherResponse.IsSuccess)
 {
@@ -29,8 +48,10 @@ if (weatherResponse.IsSuccess)
     List<Markup> locationMarkupList = new()
     {
         new Markup($"[red]City: [/]{weatherRoot.Name}"),
-        new Markup($"[red]Latitude: [/]{string.Format("{0:0.0000}", weatherRoot.Coordinates.Latitude)}"),
-        new Markup($"[red]Longitude: [/]{string.Format("{0:0.0000}", weatherRoot.Coordinates.Longitude)}")
+        new Markup($"[red]Latitude: [/]{weatherRoot.Coordinates.Latitude:0.0000}"),
+        new Markup($"[red]Longitude: [/]{weatherRoot.Coordinates.Longitude:0.0000}"),
+        new Markup($"[red]Country: [/]{geolocation.Country}"),
+        new Markup($"[red]State: [/]{geolocation.State}")
     };
     Rows locationRows = new(locationMarkupList);
     Panel locationPanel = new(locationRows)
