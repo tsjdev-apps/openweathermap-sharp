@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<Title>OpenWeatherMapSharp</Title>
-		<Version>3.1.0</Version>
+		<Version>3.1.1</Version>
 		<Authors>Thomas Sebastian Jensen</Authors>
 		<Company>tsjdev-apps.de</Company>
 		<Description>An unofficial .NET API wrapper for OpenWeatherMap.org</Description>
@@ -22,19 +22,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="Assets\icon.png">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="Assets\icon.png">
 			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
+			<Visible>False</Visible>
+			<PackagePath>Assets\icon.png</PackagePath>
 		</None>
 	</ItemGroup>
 
