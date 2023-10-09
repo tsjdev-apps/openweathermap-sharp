@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<Title>OpenWeatherMapSharp</Title>
-		<Version>3.1.1</Version>
+		<Version>3.1.2</Version>
 		<Authors>Thomas Sebastian Jensen</Authors>
 		<Company>tsjdev-apps.de</Company>
 		<Description>An unofficial .NET API wrapper for OpenWeatherMap.org</Description>
@@ -12,7 +12,7 @@
 		<PackageProjectUrl>https://github.com/tsjdev-apps/openweathermap-sharp</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/tsjdev-apps/openweathermap-sharp</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageIcon>Assets\icon.png</PackageIcon>
+		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>OpenWeatherMap; Api; Mock; Wrapper; free; Weather</PackageTags>
 		<PackageReleaseNotes>
 			- New API endpoints to get the geolocation by name, zip code or latitude/longitude
@@ -24,13 +24,9 @@
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
-		<None Update="Assets\icon.png">
-			<Pack>True</Pack>
-			<Visible>False</Visible>
-			<PackagePath>Assets\icon.png</PackagePath>
-		</None>
+		<None Include="icon.png" Pack="true" PackagePath=""/>
 	</ItemGroup>
 
 </Project>
