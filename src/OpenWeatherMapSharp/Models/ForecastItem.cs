@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using OpenWeatherMapSharp.Utils;
+using System;
 using System.Collections.Generic;
 
 namespace OpenWeatherMapSharp.Models
@@ -61,5 +63,17 @@ namespace OpenWeatherMapSharp.Models
         /// </summary>
         [JsonProperty("city")]
         public City City { get; set; }
+
+        /// <summary>
+        ///     Date, Unix, UTC
+        /// </summary>
+        [JsonProperty("dt")]
+        public long DateUnix { get; set; }
+
+        /// <summary>
+        ///     Date, DateTime
+        /// </summary>
+        [JsonIgnore]
+        public DateTime Date => DateUnix.ToDateTime();
     }
 }
