@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<Title>OpenWeatherMapSharp</Title>
-		<Version>3.1.2</Version>
+		<Version>3.1.4</Version>
 		<Authors>Thomas Sebastian Jensen</Authors>
 		<Company>tsjdev-apps.de</Company>
 		<Description>An unofficial .NET API wrapper for OpenWeatherMap.org</Description>
@@ -15,8 +15,9 @@
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>OpenWeatherMap; Api; Mock; Wrapper; free; Weather</PackageTags>
 		<PackageReleaseNotes>
-			- New API endpoints to get the geolocation by name, zip code or latitude/longitude
 			- Code improvements
+			- Add IconName to data model
+			- Add DateTime information to forcecast data model
 		</PackageReleaseNotes>
 		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>

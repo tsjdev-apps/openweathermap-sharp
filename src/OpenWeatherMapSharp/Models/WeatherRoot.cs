@@ -102,5 +102,11 @@ namespace OpenWeatherMapSharp.Models
         /// </summary>
         [JsonIgnore]
         public string Icon => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}.png";
+
+        /// <summary>
+        ///    Icon name
+        /// </summary>
+        [JsonIgnore]
+        public string IconName => $"{WeatherInfos?[0]?.Icon}";
     }
 }
