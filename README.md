@@ -1,14 +1,12 @@
 # OpenWeatherMapSharp
 
-A .NET client wrapper for https://openweathermap.org written in .NET Standard 2.0
-
+A .NET client wrapper for [https://openweathermap.org](https://openweathermap.org) written in .NET Standard 2.0
 
 ## Installation
 
 Install the package via [NuGet](https://www.nuget.org/packages/OpenWeatherMapSharp).
 
-<a href="https://www.nuget.org/packages/OpenWeatherMapSharp" target="_blank">![Nuget](https://img.shields.io/nuget/v/OpenWeatherMapSharp)</a>
-
+[![Nuget](https://img.shields.io/nuget/v/OpenWeatherMapSharp)](https://www.nuget.org/packages/OpenWeatherMapSharp)
 
 ## Usage
 
@@ -18,7 +16,8 @@ You need to create a new instance of `OpenWeatherMapService` passing in the *API
 
 ```csharp
 /// <summary>
-///     Gets forecast for a location given its longitude and latitude
+/// Gets forecast data for a location based 
+/// on its geographic coordinates.
 /// </summary>
 Task<OpenWeatherMapServiceResponse<ForecastRoot>> GetForecastAsync(
     double latitude,
@@ -27,7 +26,7 @@ Task<OpenWeatherMapServiceResponse<ForecastRoot>> GetForecastAsync(
     Unit unit = Unit.Standard);
 
 /// <summary>
-///     Gets forecast for a location given its city ID
+/// Gets forecast data based on a city ID.
 /// </summary>
 [Obsolete]
 Task<OpenWeatherMapServiceResponse<ForecastRoot>> GetForecastAsync(
@@ -36,7 +35,7 @@ Task<OpenWeatherMapServiceResponse<ForecastRoot>> GetForecastAsync(
     Unit unit = Unit.Standard);
 
 /// <summary>
-///     Gets forecast for a location given its city name
+/// Gets forecast data based on a city name.
 /// </summary>
 [Obsolete]
 Task<OpenWeatherMapServiceResponse<ForecastRoot>> GetForecastAsync(
@@ -45,7 +44,7 @@ Task<OpenWeatherMapServiceResponse<ForecastRoot>> GetForecastAsync(
     Unit unit = Unit.Standard);
 
 /// <summary>
-///     Gets weather information for a location given its longitude and latitude
+/// Gets current weather data for a location based on its geographic coordinates.
 /// </summary>
 Task<OpenWeatherMapServiceResponse<WeatherRoot>> GetWeatherAsync(
     double latitude,
@@ -54,7 +53,7 @@ Task<OpenWeatherMapServiceResponse<WeatherRoot>> GetWeatherAsync(
     Unit unit = Unit.Standard);
 
 /// <summary>
-/// Gets weather information for a location given its city ID
+/// Gets current weather data based on a city ID.
 /// </summary>
 [Obsolete]
 Task<OpenWeatherMapServiceResponse<WeatherRoot>> GetWeatherAsync(
@@ -63,31 +62,74 @@ Task<OpenWeatherMapServiceResponse<WeatherRoot>> GetWeatherAsync(
     Unit unit = Unit.Standard);
 
 /// <summary>
-/// Gets weather information for a location given its city name
+/// Gets current weather data based on a city name.
 /// </summary>
 [Obsolete]
 Task<OpenWeatherMapServiceResponse<WeatherRoot>> GetWeatherAsync(
     string city,
     LanguageCode language = LanguageCode.EN,
     Unit unit = Unit.Standard);
+
+/// <summary>
+/// Gets a list of matching locations for a given query string.
+/// </summary>
+Task<OpenWeatherMapServiceResponse<List<GeocodeInfo>>> GetLocationByNameAsync(
+    string query,
+    int limit = 5);
+
+/// <summary>
+/// Gets geolocation information based on a ZIP or postal code.
+/// </summary>
+Task<OpenWeatherMapServiceResponse<GeocodeZipInfo>> GetLocationByZipAsync(
+    string zipCode);
+
+/// <summary>
+/// Gets a list of matching locations for a given pair of coordinates.
+/// </summary>
+Task<OpenWeatherMapServiceResponse<List<GeocodeInfo>>> GetLocationByLatLonAsync(
+    double latitude,
+    double longitude,
+    int limit = 5);
+
+/// <summary>
+/// Retrieves current air pollution data for a specific location.
+/// </summary>
+Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionAsync(
+    double latitude,
+    double longitude);
+
+/// <summary>
+/// Retrieves forecasted air pollution data for the coming days for a specific location.
+/// </summary>
+Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionForecastAsync(
+    double latitude,
+    double longitude);
+
+/// <summary>
+/// Retrieves historical air pollution data for a specific location and time range.
+/// </summary>
+Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionHistoryAsync(
+    double latitude,
+    double longitude,
+    DateTime start,
+    DateTime end);
 ```
 
 ***HINT:*** Some methods are marked as `obsolete`, because [openweathermap.org](https://openweathermap.org) marked these methods as depracted. Currently they are all still working, but might be removed in feature releases. They recommend using the methods with *latitude* and *longitude* to get the current weather or the forecast.
-
 
 ## Sample
 
 Here is a screenshot of the `Console Application` using the [NuGet package](https://www.nuget.org/packages/OpenWeatherMapSharp) to get the current weather for a provided city.
 
-![](./docs/openweathermapsharp-sample.png)
+![Console Application](./docs/openweathermapsharp-sample.png)
 
 ## Buy Me A Coffee
 
-I appreciate any form of support to keep my _Open Source_ activities going.
+I appreciate any form of support to keep my *Open Source* activities going.
 
 Whatever you decide, be it reading and sharing my blog posts, using my NuGet packages or buying me a coffee/book, thank you ❤️.
 
-<a href="https://www.buymeacoffee.com/tsjdevapps" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/default-yellow.png)](https://www.buymeacoffee.com/tsjdevapps)
 
 ## Contributing
 
