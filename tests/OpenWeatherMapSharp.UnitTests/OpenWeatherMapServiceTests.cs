@@ -265,4 +265,80 @@ public class OpenWeatherMapServiceTests
         Assert.False(response.IsSuccess);
         Assert.NotNull(response.Error);
     }
+
+    [Fact]
+    public async Task GetAirPollution_ShouldReturnValidResponse()
+    {
+        // Arrange
+        OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
+        double latitude = 48.89;
+        double longitude = 8.69;
+
+        // Act
+        OpenWeatherMapServiceResponse<AirPolutionRoot> response =
+            await service.GetAirPolutionAsync(latitude, longitude);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.True(response.IsSuccess);
+        Assert.NotNull(response.Response);
+        Assert.Null(response.Error);
+
+        var entry = response.Response.Entries.FirstOrDefault();
+        Assert.NotNull(entry);
+        Assert.InRange(entry.Components.CoarseParticulateMatter, 0, 1000); // basic plausibility check
+    }
+
+    [Fact]
+    public async Task GetAirPollutionForecast_ShouldReturnFutureEntries()
+    {
+        // Arrange
+        OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
+        double latitude = 48.89;
+        double longitude = 8.69;
+
+        // Act
+        OpenWeatherMapServiceResponse<AirPolutionRoot> response =
+            await service.GetAirPolutionForecastAsync(latitude, longitude);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.True(response.IsSuccess);
+        Assert.NotNull(response.Response);
+        Assert.Null(response.Error);
+
+        var first = response.Response.Entries.FirstOrDefault();
+        Assert.NotNull(first);
+        Assert.True(first.Date > DateTime.UtcNow.AddHours(-1));
+    }
+
+    [Fact]
+    public async Task GetAirPollutionHistory_ShouldReturnEntriesInTimeRange()
+    {
+        // Arrange
+        OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
+        double latitude = 48.89;
+        double longitude = 8.69;
+
+        // Use a valid past time range (e.g. 3–2 days ago)
+        DateTime end = DateTime.UtcNow.AddDays(-2);
+        DateTime start = end.AddHours(-24);
+
+        // Act
+        OpenWeatherMapServiceResponse<AirPolutionRoot> response =
+            await service.GetAirPolutionHistoryAsync(latitude, longitude, start, end);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.True(response.IsSuccess);
+        Assert.NotNull(response.Response);
+        Assert.Null(response.Error);
+        Assert.NotEmpty(response.Response.Entries);
+
+        // Ensure all entries are within the time range
+        foreach (var entry in response.Response.Entries)
+        {
+            Assert.InRange(entry.Date, start, end);
+        }
+    }
 }
