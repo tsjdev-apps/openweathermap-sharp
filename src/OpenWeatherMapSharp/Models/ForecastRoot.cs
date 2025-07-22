@@ -1,41 +1,47 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     The Forcast Root object
+    /// Represents the root object of a 
+    /// weather forecast API response.
     /// </summary>
     public class ForecastRoot
     {
         /// <summary>
-        ///     Internal parameter
+        /// Response status code 
+        /// (e.g., "200" for success).
         /// </summary>
-        [JsonProperty("cod")]
+        [JsonPropertyName("cod")]
         public string Code { get; set; }
 
         /// <summary>
-        ///     Internal parameter
+        /// Internal message or status value 
+        /// (usage may vary by API version).
         /// </summary>
-        [JsonProperty("message")]
+        [JsonPropertyName("message")]
         public double Message { get; set; }
 
         /// <summary>
-        ///     A number of timestamps returned in the API response
+        /// Number of forecast entries returned 
+        /// in the response.
         /// </summary>
-        [JsonProperty("cnt")]
+        [JsonPropertyName("cnt")]
         public int Count { get; set; }
 
         /// <summary>
-        ///     List of forecast items
+        /// List of forecast items for 
+        /// different timestamps.
         /// </summary>
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public List<ForecastItem> Items { get; set; }
 
         /// <summary>
-        ///     City information
+        /// Information about the city to which 
+        /// the forecast applies.
         /// </summary>
-        [JsonProperty("city")]
+        [JsonPropertyName("city")]
         public City City { get; set; }
     }
 }

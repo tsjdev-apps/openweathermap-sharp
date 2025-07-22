@@ -1,23 +1,32 @@
 ﻿namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     Wrapper for the OpenWeatherMapService response
+    /// Generic wrapper for responses returned 
+    /// by the OpenWeatherMapService.
+    /// Encapsulates success status, 
+    /// response data, and potential error messages.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class OpenWeatherMapServiceResponse<T> where T : class
+    /// <typeparam name="T">
+    /// The type of the response object.
+    /// </typeparam>
+    public class OpenWeatherMapServiceResponse<T>
+        where T : class
     {
         /// <summary>
-        ///     Indicates if the request was successful
+        /// Indicates whether the request 
+        /// was successful.
         /// </summary>
         public bool IsSuccess { get; set; }
 
         /// <summary>
-        ///     Contains the provided response object
+        /// The response object returned by 
+        /// the service if the request was successful.
         /// </summary>
         public T Response { get; set; }
 
         /// <summary>
-        ///     Error information
+        /// Error message or details 
+        /// if the request failed.
         /// </summary>
         public string Error { get; set; }
     }

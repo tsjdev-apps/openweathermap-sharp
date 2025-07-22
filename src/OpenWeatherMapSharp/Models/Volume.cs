@@ -1,22 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     Volume information
+    /// Represents precipitation volume over 
+    /// a specific time period.
     /// </summary>
     public class Volume
     {
         /// <summary>
-        ///     Volume for the last 1 hour, mm.
+        /// Precipitation volume for the last 
+        /// 1 hour, in millimeters.
         /// </summary>
-        [JsonProperty("1h")]
+        [JsonPropertyName("1h")]
         public double OneHour { get; set; }
-
-        /// <summary>
-        ///     Volume for the last 3 hour, mm.
-        /// </summary>
-        [JsonProperty("3h")]
-        public double ThreeHours { get; set; }
     }
 }

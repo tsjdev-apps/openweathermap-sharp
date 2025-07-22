@@ -1,79 +1,86 @@
-﻿using Newtonsoft.Json;
-using OpenWeatherMapSharp.Utils;
+﻿using OpenWeatherMapSharp.Utils;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     A Forcast Item
+    /// Represents a single forecast entry 
+    /// containing weather data for a 
+    /// specific point in time.
     /// </summary>
     public class ForecastItem
     {
         /// <summary>
-        ///     Main weather information
+        /// Main weather parameters such as 
+        /// temperature, pressure, and humidity.
         /// </summary>
-        [JsonProperty("main")]
+        [JsonPropertyName("main")]
         public Main MainWeather { get; set; }
 
         /// <summary>
-        ///     List of weather infos
+        /// A list of weather conditions 
+        /// (e.g., rain, clouds, clear sky).
         /// </summary>
-        [JsonProperty("weather")]
+        [JsonPropertyName("weather")]
         public List<WeatherInfo> WeatherInfos { get; set; }
 
         /// <summary>
-        ///     Cloud information
+        /// Cloud coverage information.
         /// </summary>
-        [JsonProperty("clouds")]
+        [JsonPropertyName("clouds")]
         public Clouds Clouds { get; set; }
 
         /// <summary>
-        ///     Wind information
+        /// Wind speed and direction information.
         /// </summary>
-        [JsonProperty("wind")]
+        [JsonPropertyName("wind")]
         public Wind Wind { get; set; }
 
         /// <summary>
-        ///     Average visibility, metres
+        /// Average visibility in meters.
         /// </summary>
-        [JsonProperty("visibility")]
+        [JsonPropertyName("visibility")]
         public double Visibility { get; set; }
 
         /// <summary>
-        ///     Probability of precipitation
+        /// Probability of precipitation (0.0–1.0).
         /// </summary>
-        [JsonProperty("pop")]
+        [JsonPropertyName("pop")]
         public double Probability { get; set; }
 
         /// <summary>
-        ///     Rain information
+        /// Rain volume information.
         /// </summary>
-        [JsonProperty("rain")]
+        [JsonPropertyName("rain")]
         public Volume Rain { get; set; }
 
         /// <summary>
-        ///     Snow information
+        /// Snow volume information.
         /// </summary>
-        [JsonProperty("snow")]
+        [JsonPropertyName("snow")]
         public Volume Snow { get; set; }
 
         /// <summary>
-        ///     City information
+        /// City details associated with the forecast 
+        /// (if applicable).
         /// </summary>
-        [JsonProperty("city")]
+        [JsonPropertyName("city")]
         public City City { get; set; }
 
         /// <summary>
-        ///     Date, Unix, UTC
+        /// Forecast time as Unix timestamp (UTC).
         /// </summary>
-        [JsonProperty("dt")]
+        [JsonPropertyName("dt")]
         public long DateUnix { get; set; }
 
         /// <summary>
-        ///     Date, DateTime
+        /// Forecast time as a 
+        /// UTC <see cref="DateTime"/>.
         /// </summary>
         [JsonIgnore]
-        public DateTime Date => DateUnix.ToDateTime();
+        public DateTime Date 
+            => DateUnix.ToDateTime();
     }
 }

@@ -1,44 +1,55 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
+    /// <summary>
+    /// Represents a geocoded location with name, 
+    /// coordinates, and optional metadata such 
+    /// as country and state.
+    /// </summary>
     public class GeocodeInfo
     {
         /// <summary>
-        ///     Name of the found location
+        /// Name of the found location.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
-        ///     Name of the found location in dufferent languages
+        /// Localized names of the location in 
+        /// different languages, keyed by 
+        /// language code (e.g., "en", "de").
         /// </summary>
-        [JsonProperty("local_names")]
+        [JsonPropertyName("local_names")]
         public Dictionary<string, string> LocalNames { get; set; }
 
         /// <summary>
-        ///     Geographical coordinates of the found location: Latitude
+        /// Latitude of the location 
+        /// in decimal degrees.
         /// </summary>
-        [JsonProperty("lat")]
+        [JsonPropertyName("lat")]
         public double Latitude { get; set; }
 
         /// <summary>
-        ///     Geographical coordinates of the found location: Longitude
+        /// Longitude of the location 
+        /// in decimal degrees.
         /// </summary>
-        [JsonProperty("lon")]
+        [JsonPropertyName("lon")]
         public double Longitude { get; set; }
 
         /// <summary>
-        ///     Country of the found location        
+        /// Country code of the location 
+        /// (ISO 3166 format, e.g., "US", "DE").
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
-        ///     State of the found location, where available
+        /// Optional state or administrative 
+        /// region of the location, if available.
         /// </summary>
-        [JsonProperty("state")]
+        [JsonPropertyName("state")]
         public string State { get; set; }
     }
 }

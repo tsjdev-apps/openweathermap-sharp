@@ -1,16 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     Clouds information
+    /// Represents cloud coverage information.
     /// </summary>
     public class Clouds
     {
         /// <summary>
-        ///     Cloudiness, %
+        /// Cloudiness percentage (0–100).
         /// </summary>
-        [JsonProperty("all")]
+        [JsonPropertyName("all")]
         public int Cloudiness { get; set; }
     }
 }

@@ -1,30 +1,34 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     Wind information
+    /// Represents wind-related weather data, 
+    /// including speed, direction, and gusts.
     /// </summary>
     public class Wind
     {
         /// <summary>
-        ///     Wind speed
-        ///     Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour
+        /// Wind speed.
+        /// Units — Default & Metric: 
+        /// meters/second, Imperial: miles/hour.
         /// </summary>
-        [JsonProperty("speed")]
+        [JsonPropertyName("speed")]
         public double Speed { get; set; }
 
         /// <summary>
-        ///     Wind direction, degrees (meteorological)
+        /// Wind direction in 
+        /// meteorological degrees (0°–360°).
         /// </summary>
-        [JsonProperty("deg")]
+        [JsonPropertyName("deg")]
         public double Degrees { get; set; }
 
         /// <summary>
-        ///     Wind gust
-        ///     Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour
+        /// Wind gust speed.
+        /// Units — Default & Metric: 
+        /// meters/second, Imperial: miles/hour.
         /// </summary>
-        [JsonProperty("gust")]
+        [JsonPropertyName("gust")]
         public double Gust { get; set; }
     }
 }

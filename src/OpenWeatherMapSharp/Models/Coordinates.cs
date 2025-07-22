@@ -1,22 +1,25 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     Coordinates information
+    /// Represents the geographic coordinates 
+    /// of a location.
     /// </summary>
     public class Coordinates
     {
         /// <summary>
-        ///     Longitude of the location
+        /// Longitude of the location, 
+        /// in decimal degrees.
         /// </summary>
-        [JsonProperty("lon")]        
+        [JsonPropertyName("lon")]
         public double Longitude { get; set; }
 
         /// <summary>
-        ///     Latitude of the location
+        /// Latitude of the location, 
+        /// in decimal degrees.
         /// </summary>
-        [JsonProperty("lat")]
+        [JsonPropertyName("lat")]
         public double Latitude { get; set; }
     }
 }

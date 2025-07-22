@@ -1,54 +1,60 @@
-﻿using Newtonsoft.Json;
-using OpenWeatherMapSharp.Utils;
+﻿using OpenWeatherMapSharp.Utils;
 using System;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     System information
+    /// Contains system-related metadata 
+    /// from the OpenWeatherMap API response.
     /// </summary>
     public class System
     {
         /// <summary>
-        ///     Internal parameter
+        /// Internal parameter used by the API.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public int Type { get; set; }
 
         /// <summary>
-        ///     Internal parameter
+        /// Internal system identifier.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
 
         /// <summary>
-        ///     Country code (GB, JP etc.)
+        /// Country code (ISO 3166 format), 
+        /// e.g., "GB", "JP".
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
-        ///     Sunrise time, unix, UTC
+        /// Sunrise time as a Unix timestamp (UTC).
         /// </summary>
-        [JsonProperty("sunrise")]
+        [JsonPropertyName("sunrise")]
         public long SunriseUnix { get; set; }
 
         /// <summary>
-        ///     Sunrise time, DateTime
+        /// Sunrise time converted to a 
+        /// UTC <see cref="DateTime"/>.
         /// </summary>
         [JsonIgnore]
-        public DateTime Sunrise => SunriseUnix.ToDateTime();
+        public DateTime Sunrise
+            => SunriseUnix.ToDateTime();
 
         /// <summary>
-        ///     Sunset time, unix, UTC
+        /// Sunset time as a Unix timestamp (UTC).
         /// </summary>
-        [JsonProperty("sunset")]
+        [JsonPropertyName("sunset")]
         public long SunsetUnix { get; set; }
 
         /// <summary>
-        ///     Sunset time, DateTime
+        /// Sunset time converted to a 
+        /// UTC <see cref="DateTime"/>.
         /// </summary>
         [JsonIgnore]
-        public DateTime Sunset => SunsetUnix.ToDateTime();
+        public DateTime Sunset
+            => SunsetUnix.ToDateTime();
     }
 }
