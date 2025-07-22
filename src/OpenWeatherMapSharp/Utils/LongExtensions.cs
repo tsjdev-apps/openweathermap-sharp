@@ -17,12 +17,12 @@ namespace OpenWeatherMapSharp.Utils
         /// The Unix timestamp to convert.</param>
         /// <returns>
         /// A <see cref="DateTime"/> object representing 
-        /// the local time.
+        /// the universal time.
         /// </returns>
         internal static DateTime ToDateTime(this long unixTimeStamp)
         {
             DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            return dateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dateTime.AddSeconds(unixTimeStamp).ToUniversalTime();
         }
     }
 }
