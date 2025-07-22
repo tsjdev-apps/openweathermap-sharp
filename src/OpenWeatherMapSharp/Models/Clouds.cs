@@ -3,12 +3,12 @@
 namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     Clouds information
+    /// Represents cloud coverage information.
     /// </summary>
     public class Clouds
     {
         /// <summary>
-        ///     Cloudiness, %
+        /// Cloudiness percentage (0–100).
         /// </summary>
         [JsonPropertyName("all")]
         public int Cloudiness { get; set; }

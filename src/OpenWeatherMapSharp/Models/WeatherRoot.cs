@@ -5,127 +5,138 @@ using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
+    /// <summary>
+    /// Represents the root object of the 
+    /// current weather data response from 
+    /// the OpenWeatherMap API.
+    /// </summary>
     public class WeatherRoot
     {
         /// <summary>
-        ///     Coordinates information
+        /// Geographic coordinates of the location.
         /// </summary>
         [JsonPropertyName("coord")]
         public Coordinates Coordinates { get; set; }
 
         /// <summary>
-        ///     List of weather infos
+        /// List of weather conditions.
         /// </summary>
         [JsonPropertyName("weather")]
         public List<WeatherInfo> WeatherInfos { get; set; }
 
         /// <summary>
-        ///     Internal parameter
+        /// Internal parameter (usually "stations").
         /// </summary>
         [JsonPropertyName("base")]
         public string Base { get; set; } = string.Empty;
 
         /// <summary>
-        ///     Main weather information
+        /// Main weather parameters such as 
+        /// temperature, humidity, and pressure.
         /// </summary>
         [JsonPropertyName("main")]
         public Main MainWeather { get; set; }
 
         /// <summary>
-        ///     Average visibility, metres
+        /// Visibility in meters.
         /// </summary>
         [JsonPropertyName("visibility")]
         public double Visibility { get; set; } = 0;
 
         /// <summary>
-        ///     Wind information
+        /// Wind data including speed and direction.
         /// </summary>
         [JsonPropertyName("wind")]
         public Wind Wind { get; set; }
 
         /// <summary>
-        ///     Clouds information
+        /// Cloud coverage data.
         /// </summary>
         [JsonPropertyName("clouds")]
         public Clouds Clouds { get; set; }
 
         /// <summary>
-        ///     Rain information
+        /// Rain volume data.
         /// </summary>
         [JsonPropertyName("rain")]
         public Volume Rain { get; set; }
 
         /// <summary>
-        ///     Snow information
+        /// Snow volume data.
         /// </summary>
         [JsonPropertyName("snow")]
         public Volume Snow { get; set; }
 
         /// <summary>
-        ///     Date, Unix, UTC
+        /// Timestamp of the weather data (Unix, UTC).
         /// </summary>
         [JsonPropertyName("dt")]
         public long DateUnix { get; set; }
 
         /// <summary>
-        ///     Date, DateTime
+        /// Timestamp of the weather data as a 
+        /// UTC <see cref="DateTime"/>.
         /// </summary>
         [JsonIgnore]
         public DateTime Date => DateUnix.ToDateTime();
 
         /// <summary>
-        ///     System information
+        /// System data such as sunrise, sunset, 
+        /// and country code.
         /// </summary>
         [JsonPropertyName("sys")]
         public System System { get; set; }
 
         /// <summary>
-        ///     Shift in seconds from UTC
+        /// Shift in seconds from UTC.
         /// </summary>
         [JsonPropertyName("timezone")]
         public int Timezone { get; set; }
 
         /// <summary>
-        ///     City ID
+        /// City ID.
         /// </summary>
         [JsonPropertyName("id")]
         public int CityId { get; set; }
 
         /// <summary>
-        ///     City name
+        /// City name.
         /// </summary>
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
-        ///     Internal parameter
+        /// Response status code.
         /// </summary>
         [JsonPropertyName("cod")]
         public int Code { get; set; }
 
         /// <summary>
-        ///     Icon url
+        /// Weather icon URL (default size).
         /// </summary>
         [JsonIgnore]
-        public string Icon => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}.png";
+        public string Icon 
+            => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}.png";
 
         /// <summary>
-        ///     Icon url (2x)
+        /// Weather icon URL (2x resolution).
         /// </summary>
         [JsonIgnore]
-        public string Icon2x => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}@2x.png";
+        public string Icon2x 
+            => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}@2x.png";
 
         /// <summary>
-        ///     Icon url (4x)
+        /// Weather icon URL (4x resolution).
         /// </summary>
         [JsonIgnore]
-        public string Icon4x => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}@4x.png";
-
+        public string Icon4x 
+            => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}@4x.png";
 
         /// <summary>
-        ///    Icon name
+        /// Weather icon name.
         /// </summary>
         [JsonIgnore]
-        public string IconName => $"{WeatherInfos?[0]?.Icon}";
+        public string IconName 
+            => WeatherInfos?[0]?.Icon;
     }
 }

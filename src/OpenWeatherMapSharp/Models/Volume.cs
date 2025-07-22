@@ -3,12 +3,14 @@
 namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     Volume information
+    /// Represents precipitation volume over 
+    /// a specific time period.
     /// </summary>
     public class Volume
     {
         /// <summary>
-        ///     Volume for the last 1 hour, mm.
+        /// Precipitation volume for the last 
+        /// 1 hour, in millimeters.
         /// </summary>
         [JsonPropertyName("1h")]
         public double OneHour { get; set; }

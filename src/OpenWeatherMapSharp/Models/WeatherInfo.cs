@@ -3,30 +3,34 @@
 namespace OpenWeatherMapSharp.Models
 {
     /// <summary>
-    ///     Weather information
+    /// Represents detailed weather condition information.
     /// </summary>
     public class WeatherInfo
     {
         /// <summary>
-        ///     Weather condition id
+        /// Weather condition ID as 
+        /// defined by OpenWeatherMap.
         /// </summary>
         [JsonPropertyName("id")]
         public int Id { get; set; }
 
         /// <summary>
-        ///     Group of weather parameters (Rain, Snow, Clouds etc.)
+        /// Broad category of weather 
+        /// conditions (e.g., Rain, Snow, Clouds).
         /// </summary>
         [JsonPropertyName("main")]
         public string Main { get; set; }
 
         /// <summary>
-        ///     Weather coniditon with the group
+        /// More detailed description of 
+        /// the weather condition.
         /// </summary>
         [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
-        ///     Weather icon id
+        /// Weather icon ID that can be used 
+        /// to retrieve the corresponding icon.
         /// </summary>
         [JsonPropertyName("icon")]
         public string Icon { get; set; }

@@ -2,34 +2,43 @@
 
 namespace OpenWeatherMapSharp.Models
 {
+    /// <summary>
+    /// Represents geolocation data 
+    /// returned from a ZIP/postal code 
+    /// geocoding request.
+    /// </summary>
     public class GeocodeZipInfo
     {
         /// <summary>
-        ///     Specified zip/post code in the API request
+        /// The ZIP or postal code specified 
+        /// in the API request.
         /// </summary>
         [JsonPropertyName("zip")]
         public string ZipCode { get; set; }
 
         /// <summary>
-        ///     Name of the found area
+        /// The name of the found area or locality.
         /// </summary>
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
-        ///     Geographical coordinates of the found location: Latitude
+        /// Latitude of the found location in 
+        /// decimal degrees.
         /// </summary>
         [JsonPropertyName("lat")]
-        public double Latiude { get; set; }
+        public double Latitude { get; set; }
 
         /// <summary>
-        ///     Geographical coordinates of the found location: Longitude
+        /// Longitude of the found location 
+        /// in decimal degrees.
         /// </summary>
         [JsonPropertyName("lon")]
         public double Longitude { get; set; }
 
         /// <summary>
-        ///     Country of the found zip/post code
+        /// Country code of the location 
+        /// (ISO 3166 format, e.g., "US", "DE").
         /// </summary>
         [JsonPropertyName("country")]
         public string Country { get; set; }
