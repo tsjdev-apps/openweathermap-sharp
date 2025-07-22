@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -10,13 +10,13 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     Longitude of the location
         /// </summary>
-        [JsonProperty("lon")]        
+        [JsonPropertyName("lon")]
         public double Longitude { get; set; }
 
         /// <summary>
         ///     Latitude of the location
         /// </summary>
-        [JsonProperty("lat")]
+        [JsonPropertyName("lat")]
         public double Latitude { get; set; }
     }
 }

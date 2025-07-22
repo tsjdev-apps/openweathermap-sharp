@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -11,31 +11,31 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     Internal parameter
         /// </summary>
-        [JsonProperty("cod")]
+        [JsonPropertyName("cod")]
         public string Code { get; set; }
 
         /// <summary>
         ///     Internal parameter
         /// </summary>
-        [JsonProperty("message")]
+        [JsonPropertyName("message")]
         public double Message { get; set; }
 
         /// <summary>
         ///     A number of timestamps returned in the API response
         /// </summary>
-        [JsonProperty("cnt")]
+        [JsonPropertyName("cnt")]
         public int Count { get; set; }
 
         /// <summary>
         ///     List of forecast items
         /// </summary>
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public List<ForecastItem> Items { get; set; }
 
         /// <summary>
         ///     City information
         /// </summary>
-        [JsonProperty("city")]
+        [JsonPropertyName("city")]
         public City City { get; set; }
     }
 }

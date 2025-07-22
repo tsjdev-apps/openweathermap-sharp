@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using OpenWeatherMapSharp.Utils;
+﻿using OpenWeatherMapSharp.Utils;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -10,61 +10,61 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     Coordinates information
         /// </summary>
-        [JsonProperty("coord")]
+        [JsonPropertyName("coord")]
         public Coordinates Coordinates { get; set; }
 
         /// <summary>
         ///     List of weather infos
         /// </summary>
-        [JsonProperty("weather")]
+        [JsonPropertyName("weather")]
         public List<WeatherInfo> WeatherInfos { get; set; }
 
         /// <summary>
         ///     Internal parameter
         /// </summary>
-        [JsonProperty("base")]
+        [JsonPropertyName("base")]
         public string Base { get; set; } = string.Empty;
 
         /// <summary>
         ///     Main weather information
         /// </summary>
-        [JsonProperty("main")]
+        [JsonPropertyName("main")]
         public Main MainWeather { get; set; }
 
         /// <summary>
         ///     Average visibility, metres
         /// </summary>
-        [JsonProperty("visibility")]
+        [JsonPropertyName("visibility")]
         public double Visibility { get; set; } = 0;
 
         /// <summary>
         ///     Wind information
         /// </summary>
-        [JsonProperty("wind")]
+        [JsonPropertyName("wind")]
         public Wind Wind { get; set; }
 
         /// <summary>
         ///     Clouds information
         /// </summary>
-        [JsonProperty("clouds")]
+        [JsonPropertyName("clouds")]
         public Clouds Clouds { get; set; }
 
         /// <summary>
         ///     Rain information
         /// </summary>
-        [JsonProperty("rain")]
+        [JsonPropertyName("rain")]
         public Volume Rain { get; set; }
 
         /// <summary>
         ///     Snow information
         /// </summary>
-        [JsonProperty("snow")]
+        [JsonPropertyName("snow")]
         public Volume Snow { get; set; }
 
         /// <summary>
         ///     Date, Unix, UTC
         /// </summary>
-        [JsonProperty("dt")]
+        [JsonPropertyName("dt")]
         public long DateUnix { get; set; }
 
         /// <summary>
@@ -76,25 +76,25 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     System information
         /// </summary>
-        [JsonProperty("sys")]
+        [JsonPropertyName("sys")]
         public System System { get; set; }
 
         /// <summary>
         ///     City ID
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int CityId { get; set; }
 
         /// <summary>
         ///     City name
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         ///     Internal parameter
         /// </summary>
-        [JsonProperty("cod")]
+        [JsonPropertyName("cod")]
         public int Code { get; set; }
 
         /// <summary>
@@ -102,6 +102,19 @@ namespace OpenWeatherMapSharp.Models
         /// </summary>
         [JsonIgnore]
         public string Icon => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}.png";
+
+        /// <summary>
+        ///     Icon url (2x)
+        /// </summary>
+        [JsonIgnore]
+        public string Icon2x => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}@2x.png";
+
+        /// <summary>
+        ///     Icon url (4x)
+        /// </summary>
+        [JsonIgnore]
+        public string Icon4x => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}@4x.png";
+
 
         /// <summary>
         ///    Icon name

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -10,13 +10,7 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     Volume for the last 1 hour, mm.
         /// </summary>
-        [JsonProperty("1h")]
+        [JsonPropertyName("1h")]
         public double OneHour { get; set; }
-
-        /// <summary>
-        ///     Volume for the last 3 hour, mm.
-        /// </summary>
-        [JsonProperty("3h")]
-        public double ThreeHours { get; set; }
     }
 }

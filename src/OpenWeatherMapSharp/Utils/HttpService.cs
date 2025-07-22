@@ -1,13 +1,18 @@
-﻿using Newtonsoft.Json;
-using OpenWeatherMapSharp.Models;
+﻿using OpenWeatherMapSharp.Models;
 using System;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace OpenWeatherMapSharp.Utils
 {
     internal static class HttpService
     {
+        private static readonly JsonSerializerOptions defaultJsonSerializerOptions = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
         internal static async Task<OpenWeatherMapServiceResponse<TClass>> GetDataAsync<TClass>(string url) where TClass : class
         {
             using (HttpClient client = new HttpClient())
@@ -24,7 +29,7 @@ namespace OpenWeatherMapSharp.Utils
                     return new OpenWeatherMapServiceResponse<TClass>
                     {
                         IsSuccess = true,
-                        Response = JsonConvert.DeserializeObject<TClass>(json)
+                        Response = JsonSerializer.Deserialize<TClass>(json, defaultJsonSerializerOptions)
                     };
                 }
                 catch (Exception ex)

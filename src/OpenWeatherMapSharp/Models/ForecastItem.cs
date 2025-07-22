@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using OpenWeatherMapSharp.Utils;
+﻿using OpenWeatherMapSharp.Utils;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -13,61 +13,61 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     Main weather information
         /// </summary>
-        [JsonProperty("main")]
+        [JsonPropertyName("main")]
         public Main MainWeather { get; set; }
 
         /// <summary>
         ///     List of weather infos
         /// </summary>
-        [JsonProperty("weather")]
+        [JsonPropertyName("weather")]
         public List<WeatherInfo> WeatherInfos { get; set; }
 
         /// <summary>
         ///     Cloud information
         /// </summary>
-        [JsonProperty("clouds")]
+        [JsonPropertyName("clouds")]
         public Clouds Clouds { get; set; }
 
         /// <summary>
         ///     Wind information
         /// </summary>
-        [JsonProperty("wind")]
+        [JsonPropertyName("wind")]
         public Wind Wind { get; set; }
 
         /// <summary>
         ///     Average visibility, metres
         /// </summary>
-        [JsonProperty("visibility")]
+        [JsonPropertyName("visibility")]
         public double Visibility { get; set; }
 
         /// <summary>
         ///     Probability of precipitation
         /// </summary>
-        [JsonProperty("pop")]
+        [JsonPropertyName("pop")]
         public double Probability { get; set; }
 
         /// <summary>
         ///     Rain information
         /// </summary>
-        [JsonProperty("rain")]
+        [JsonPropertyName("rain")]
         public Volume Rain { get; set; }
 
         /// <summary>
         ///     Snow information
         /// </summary>
-        [JsonProperty("snow")]
+        [JsonPropertyName("snow")]
         public Volume Snow { get; set; }
 
         /// <summary>
         ///     City information
         /// </summary>
-        [JsonProperty("city")]
+        [JsonPropertyName("city")]
         public City City { get; set; }
 
         /// <summary>
         ///     Date, Unix, UTC
         /// </summary>
-        [JsonProperty("dt")]
+        [JsonPropertyName("dt")]
         public long DateUnix { get; set; }
 
         /// <summary>

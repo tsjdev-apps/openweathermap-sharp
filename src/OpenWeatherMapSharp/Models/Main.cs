@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -11,26 +11,26 @@ namespace OpenWeatherMapSharp.Models
         ///     Temperature.
         ///     Unit Default: Kelvin, Metric: Celcius, Imperial: Fahrenheit
         /// </summary>
-        [JsonProperty("temp")]
+        [JsonPropertyName("temp")]
         public double Temperature { get; set; }
 
         /// <summary>
         ///     Temperature. This temperature parameter accounts for the human perception of weather.
         ///     Unit Default: Kelvin, Metric: Celcius, Imperial: Fahrenheit
         /// </summary>
-        [JsonProperty("feels_like")]
+        [JsonPropertyName("feels_like")]
         public double FeelsLikeTemperature { get; set; }
 
         /// <summary>
         ///     Atmospheric pressure of the sea level, hPa
         /// </summary>
-        [JsonProperty("pressure")]
+        [JsonPropertyName("pressure")]
         public double Pressure { get; set; }
 
         /// <summary>
         ///     Humidity, %
         /// </summary>
-        [JsonProperty("humidity")]
+        [JsonPropertyName("humidity")]
         public double Humidity { get; set; }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace OpenWeatherMapSharp.Models
         ///     This is minimal currently observed temperature (within large megalopolises and urban areas).
         ///     Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit
         /// </summary>
-        [JsonProperty("temp_min")]
+        [JsonPropertyName("temp_min")]
         public double MinTemperature { get; set; }
 
         /// <summary>
@@ -46,19 +46,19 @@ namespace OpenWeatherMapSharp.Models
         ///     This is maximal currently observed temperature (within large megalopolises and urban areas).
         ///     Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit
         /// </summary>
-        [JsonProperty("temp_max")]
+        [JsonPropertyName("temp_max")]
         public double MaxTemperature { get; set; }
 
         /// <summary>
         ///     Atmospheric pressure of the sea level, hPa
         /// </summary>
-        [JsonProperty("sea_level")]
+        [JsonPropertyName("sea_level")]
         public double SeaLevelPressure { get; set; }
 
         /// <summary>
         ///     Atmospheric pressure of the ground level, hPa
         /// </summary>
-        [JsonProperty("grnd_level")]
+        [JsonPropertyName("grnd_level")]
         public double GroundLevelPressure { get; set; }
     }
 }

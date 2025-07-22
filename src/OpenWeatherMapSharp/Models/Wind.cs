@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -11,20 +11,20 @@ namespace OpenWeatherMapSharp.Models
         ///     Wind speed
         ///     Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour
         /// </summary>
-        [JsonProperty("speed")]
+        [JsonPropertyName("speed")]
         public double Speed { get; set; }
 
         /// <summary>
         ///     Wind direction, degrees (meteorological)
         /// </summary>
-        [JsonProperty("deg")]
+        [JsonPropertyName("deg")]
         public double Degrees { get; set; }
 
         /// <summary>
         ///     Wind gust
         ///     Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour
         /// </summary>
-        [JsonProperty("gust")]
+        [JsonPropertyName("gust")]
         public double Gust { get; set; }
     }
 }

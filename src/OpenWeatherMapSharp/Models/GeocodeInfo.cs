@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -8,37 +8,37 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     Name of the found location
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         ///     Name of the found location in dufferent languages
         /// </summary>
-        [JsonProperty("local_names")]
+        [JsonPropertyName("local_names")]
         public Dictionary<string, string> LocalNames { get; set; }
 
         /// <summary>
         ///     Geographical coordinates of the found location: Latitude
         /// </summary>
-        [JsonProperty("lat")]
+        [JsonPropertyName("lat")]
         public double Latitude { get; set; }
 
         /// <summary>
         ///     Geographical coordinates of the found location: Longitude
         /// </summary>
-        [JsonProperty("lon")]
+        [JsonPropertyName("lon")]
         public double Longitude { get; set; }
 
         /// <summary>
         ///     Country of the found location        
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
         ///     State of the found location, where available
         /// </summary>
-        [JsonProperty("state")]
+        [JsonPropertyName("state")]
         public string State { get; set; }
     }
 }

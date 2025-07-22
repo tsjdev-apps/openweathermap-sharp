@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using OpenWeatherMapSharp.Utils;
+﻿using OpenWeatherMapSharp.Utils;
 using System;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -12,37 +12,37 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     City ID
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
 
         /// <summary>
         ///     City name
         /// </summary>
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         ///     Coordinates
         /// </summary>
-        [JsonProperty("coord")]
+        [JsonPropertyName("coord")]
         public Coordinates Coordinates { get; set; }
 
         /// <summary>
         ///     Country code (GB, JP etc.)
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
         ///     City population
         /// </summary>
-        [JsonProperty("population")]
+        [JsonPropertyName("population")]
         public int Population { get; set; }
 
         /// <summary>
         ///     Sunrise time, unix, UTC
         /// </summary>
-        [JsonProperty("sunrise")]
+        [JsonPropertyName("sunrise")]
         public long SunriseUnix { get; set; }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     Sunset time, unix, UTC
         /// </summary>
-        [JsonProperty("sunset")]
+        [JsonPropertyName("sunset")]
         public long SunsetUnix { get; set; }
 
         /// <summary>

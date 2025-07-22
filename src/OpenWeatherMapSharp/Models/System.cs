@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using OpenWeatherMapSharp.Utils;
+﻿using OpenWeatherMapSharp.Utils;
 using System;
+using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -12,25 +12,25 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     Internal parameter
         /// </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public int Type { get; set; }
 
         /// <summary>
         ///     Internal parameter
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
 
         /// <summary>
         ///     Country code (GB, JP etc.)
         /// </summary>
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
         ///     Sunrise time, unix, UTC
         /// </summary>
-        [JsonProperty("sunrise")]
+        [JsonPropertyName("sunrise")]
         public long SunriseUnix { get; set; }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     Sunset time, unix, UTC
         /// </summary>
-        [JsonProperty("sunset")]
+        [JsonPropertyName("sunset")]
         public long SunsetUnix { get; set; }
 
         /// <summary>

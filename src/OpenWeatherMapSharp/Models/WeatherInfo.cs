@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace OpenWeatherMapSharp.Models
 {
@@ -10,25 +10,25 @@ namespace OpenWeatherMapSharp.Models
         /// <summary>
         ///     Weather condition id
         /// </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
 
         /// <summary>
         ///     Group of weather parameters (Rain, Snow, Clouds etc.)
         /// </summary>
-        [JsonProperty("main")]
+        [JsonPropertyName("main")]
         public string Main { get; set; }
 
         /// <summary>
         ///     Weather coniditon with the group
         /// </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         ///     Weather icon id
         /// </summary>
-        [JsonProperty("icon")]
+        [JsonPropertyName("icon")]
         public string Icon { get; set; }
     }
 }
