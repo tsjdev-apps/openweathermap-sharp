@@ -166,7 +166,7 @@ public class OpenWeatherMapServiceTests
         Assert.Null(serviceResponse.Error);
         Assert.True(serviceResponse.IsSuccess);
 
-        var firstResult = serviceResponse.Response.FirstOrDefault();
+        GeocodeInfo? firstResult = serviceResponse.Response.FirstOrDefault();
         Assert.NotNull(firstResult);
         Assert.Equal(name, firstResult.Name);
         Assert.Equal(country, firstResult.Country);
@@ -192,7 +192,7 @@ public class OpenWeatherMapServiceTests
         Assert.Null(serviceResponse.Error);
         Assert.True(serviceResponse.IsSuccess);
 
-        var firstResult = serviceResponse.Response.FirstOrDefault();
+        GeocodeInfo? firstResult = serviceResponse.Response.FirstOrDefault();
         Assert.NotNull(firstResult);
         Assert.Equal(cityName, firstResult.Name);
         Assert.Equal(country, firstResult.Country);

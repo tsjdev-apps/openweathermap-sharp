@@ -7,7 +7,7 @@ using Spectre.Console;
 string openWeatherMapApiKey = "OWMAPIKEY";
 
 // == HEADER ==
-var headerGrid = new Grid();
+Grid headerGrid = new();
 headerGrid.AddColumn();
 headerGrid.AddRow(new FigletText("OpenWeatherMap").Centered().Color(Color.Red));
 AnsiConsole.Write(headerGrid);
@@ -18,10 +18,11 @@ string cityName = AnsiConsole.Ask<string>("[white]Insert the name of the[/] [red
 AnsiConsole.WriteLine();
 
 // == INIT SERVICE ==
-var openWeatherMapService = new OpenWeatherMapService(openWeatherMapApiKey);
+OpenWeatherMapService openWeatherMapService = new(openWeatherMapApiKey);
 
 // == GEOCODE ==
-var geolocationResponse = await openWeatherMapService.GetLocationByNameAsync(cityName);
+OpenWeatherMapServiceResponse<List<GeocodeInfo>> geolocationResponse 
+    = await openWeatherMapService.GetLocationByNameAsync(cityName);
 
 if (!geolocationResponse.IsSuccess || geolocationResponse.Response?.FirstOrDefault() is not GeocodeInfo geolocation)
 {
@@ -30,11 +31,11 @@ if (!geolocationResponse.IsSuccess || geolocationResponse.Response?.FirstOrDefau
 }
 
 // == WEATHER ==
-var weatherResponse = await openWeatherMapService.GetWeatherAsync(
-    geolocation.Latitude,
-    geolocation.Longitude,
-    unit: Unit.Metric
-);
+OpenWeatherMapServiceResponse<WeatherRoot> weatherResponse 
+    = await openWeatherMapService.GetWeatherAsync(
+        geolocation.Latitude,
+        geolocation.Longitude,
+        unit: Unit.Metric);
 
 if (!weatherResponse.IsSuccess || weatherResponse.Response is not WeatherRoot weatherRoot)
 {
@@ -42,10 +43,10 @@ if (!weatherResponse.IsSuccess || weatherResponse.Response is not WeatherRoot we
     return;
 }
 
-var mainWeather = weatherRoot.MainWeather;
+Main mainWeather = weatherRoot.MainWeather;
 
 // == LOCATION PANEL ==
-var locationPanel = new Panel(new Rows(new List<Markup>
+Panel locationPanel = new(new Rows(new List<Markup>
 {
     new($"[red]City: [/]{weatherRoot.Name}"),
     new($"[red]Latitude: [/]{weatherRoot.Coordinates.Latitude:0.0000}"),
@@ -60,8 +61,8 @@ var locationPanel = new Panel(new Rows(new List<Markup>
 AnsiConsole.Write(locationPanel);
 
 // == WEATHER PANEL ==
-var weatherMarkupList = new List<Markup>
-{
+List<Markup> weatherMarkupList =
+[
     new($"[red]Temperature: [/]{mainWeather.Temperature}° C"),
     new($"[red]Feels Like: [/]{mainWeather.FeelsLikeTemperature}° C"),
     new($"[red]Min Temperature: [/]{mainWeather.MinTemperature}° C"),
@@ -71,15 +72,15 @@ var weatherMarkupList = new List<Markup>
     new($"[red]Humidity: [/]{mainWeather.Humidity} %"),
     new($"[red]Sunrise: [/]{weatherRoot.System.Sunrise:g}"),
     new($"[red]Sunset: [/]{weatherRoot.System.Sunset:g}")
-};
+];
 
 // Add weather descriptions
-foreach (var weatherInfo in weatherRoot.WeatherInfos)
+foreach (WeatherInfo? weatherInfo in weatherRoot.WeatherInfos)
 {
     weatherMarkupList.Add(new($"[red]Conditions: [/]{weatherInfo.Description}"));
 }
 
-var weatherPanel = new Panel(new Rows(weatherMarkupList))
+Panel weatherPanel = new(new Rows(weatherMarkupList))
 {
     Header = new PanelHeader("Current Weather"),
     Width = 120
