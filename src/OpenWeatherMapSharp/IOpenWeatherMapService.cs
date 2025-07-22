@@ -121,5 +121,39 @@ namespace OpenWeatherMapSharp
             double latitude,
             double longitude,
             int limit = 5);
+
+        /// <summary>
+        /// Retrieves current air pollution data for a specific location.
+        /// </summary>
+        /// <param name="latitude">Latitude of the location.</param>
+        /// <param name="longitude">Longitude of the location.</param>
+        /// <returns>Current air pollution data wrapped in a service response.</returns>
+        Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionAsync(
+            double latitude,
+            double longitude);
+
+        /// <summary>
+        /// Retrieves forecasted air pollution data for the coming days for a specific location.
+        /// </summary>
+        /// <param name="latitude">Latitude of the location.</param>
+        /// <param name="longitude">Longitude of the location.</param>
+        /// <returns>Air pollution forecast data wrapped in a service response.</returns>
+        Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionForecastAsync(
+            double latitude,
+            double longitude);
+
+        /// <summary>
+        /// Retrieves historical air pollution data for a specific location and time range.
+        /// </summary>
+        /// <param name="latitude">Latitude of the location.</param>
+        /// <param name="longitude">Longitude of the location.</param>
+        /// <param name="start">Start of the time range (UTC).</param>
+        /// <param name="end">End of the time range (UTC).</param>
+        /// <returns>Historical air pollution data wrapped in a service response.</returns>
+        Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionHistoryAsync(
+            double latitude,
+            double longitude,
+            DateTime start,
+            DateTime end);
     }
 }

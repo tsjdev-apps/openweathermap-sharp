@@ -148,5 +148,26 @@ namespace OpenWeatherMapSharp
             string url = string.Format(Statics.GeocodeReverseUri, latitude, longitude, limit, _apiKey);
             return await HttpService.GetDataAsync<List<GeocodeInfo>>(url);
         }
+
+        /// <inheritdoc/>
+        public async Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionAsync(double latitude, double longitude)
+        {
+            string url = string.Format(Statics.AirPollutionCoordinatesUri, latitude, longitude, _apiKey);
+            return await HttpService.GetDataAsync<AirPolutionRoot>(url);
+        }
+
+        /// <inheritdoc/>
+        public async Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionForecastAsync(double latitude, double longitude)
+        {
+            string url = string.Format(Statics.AirPollutionCoordinatesForecastUri, latitude, longitude, _apiKey);
+            return await HttpService.GetDataAsync<AirPolutionRoot>(url);
+        }
+
+        /// <inheritdoc/>
+        public async Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionHistoryAsync(double latitude, double longitude, DateTime start, DateTime end)
+        {
+            string url = string.Format(Statics.AirPollutionCoordinatesHistoryUri, latitude, longitude, start.ToUnixTimestamp(), end.ToUnixTimestamp(), _apiKey);
+            return await HttpService.GetDataAsync<AirPolutionRoot>(url);
+        }
     }
 }
