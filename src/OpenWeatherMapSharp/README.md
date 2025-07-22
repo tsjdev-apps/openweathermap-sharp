@@ -1,4 +1,4 @@
-# OpenWeatherMapSharp
+﻿# OpenWeatherMapSharp
 
 A .NET client wrapper for [https://openweathermap.org](https://openweathermap.org) written in .NET Standard 2.0
 
@@ -10,7 +10,7 @@ Install the package via [NuGet](https://www.nuget.org/packages/OpenWeatherMapSha
 
 ## Usage
 
-First you need to get a free API key from [openweathermap.org](https://www.openweathermap.org). You can create a new account and you will find your API keys [here](https://home.openweathermap.org/api_keys).
+First you need to get a free API key from [openweathermap.org](https://www.openweathermap.org). You can create a new account and you will find your API keys on [your API keys page](https://home.openweathermap.org/api_keys).
 
 You need to create a new instance of `OpenWeatherMapService` passing in the *API key*. There is also an interface available, if you are using Dependency Injection.
 
@@ -116,27 +116,6 @@ Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionHistoryAsync(
 ```
 
 ***HINT:*** Some methods are marked as `obsolete`, because [openweathermap.org](https://openweathermap.org) marked these methods as depracted. Currently they are all still working, but might be removed in feature releases. They recommend using the methods with *latitude* and *longitude* to get the current weather or the forecast.
-
-## Sample
-
-Here is a screenshot of the `Console Application` using the [NuGet package](https://www.nuget.org/packages/OpenWeatherMapSharp) to get the current weather for a provided city.
-
-![Console Application](./docs/openweathermapsharp-sample.png)
-
-## Buy Me A Coffee
-
-I appreciate any form of support to keep my *Open Source* activities going.
-
-Whatever you decide, be it reading and sharing my blog posts, using my NuGet packages or buying me a coffee/book, thank you ❤️.
-
-[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/default-yellow.png)](https://www.buymeacoffee.com/tsjdevapps)
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
 
 ## License
 
