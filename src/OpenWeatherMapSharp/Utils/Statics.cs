@@ -17,6 +17,9 @@
         private static readonly string GeocodeBaseUri 
             = $"{BaseUri}/geo/1.0";
 
+        private static readonly string AirPollutionBaseUri 
+            = $"{BaseUri}/data/2.5/air_pollution";
+
 
         /// <summary>
         /// Weather by geographic coordinates (latitude, longitude).
@@ -80,5 +83,26 @@
         /// </summary>
         public static readonly string GeocodeReverseUri 
             = GeocodeBaseUri + "/reverse?lat={0}&lon={1}&limit={2}&appid={3}";
+
+        /// <summary>
+        /// Air pollution data by geographic coordinates.
+        /// Format: lat={0}&lon={1}&appid={2}
+        /// </summary>
+        public static readonly string AirPollutionCoordinatesUri 
+            = AirPollutionBaseUri + "?lat={0}&lon={1}&appid={2}";
+
+        /// <summary>
+        /// Air pollution forecast by geographic coordinates.
+        /// Format: lat={0}&lon={1}&start={2}&end={3}&appid={4}
+        /// </summary>
+        public static readonly string AirPollutionCoordinatesForecastUri 
+            = AirPollutionBaseUri + "/forecast?lat={0}&lon={1}&appid={2}";
+
+        /// <summary>
+        /// Air pollution history by geographic coordinates.
+        /// Format: lat={0}&lon={1}&start={2}&end={3}&appid={4}
+        /// </summary>
+        public static readonly string AirPollutionCoordinatesHistoryUri 
+            = AirPollutionBaseUri + "/history?lat={0}&lon={1}&start={2}&end={3}&appid={4}";
     }
 }
