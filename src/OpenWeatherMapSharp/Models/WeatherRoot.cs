@@ -80,6 +80,12 @@ namespace OpenWeatherMapSharp.Models
         public System System { get; set; }
 
         /// <summary>
+        ///     Shift in seconds from UTC
+        /// </summary>
+        [JsonPropertyName("timezone")]
+        public int Timezone { get; set; }
+
+        /// <summary>
         ///     City ID
         /// </summary>
         [JsonPropertyName("id")]
