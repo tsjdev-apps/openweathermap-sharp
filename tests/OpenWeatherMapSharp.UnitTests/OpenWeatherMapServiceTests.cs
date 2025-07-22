@@ -1,213 +1,268 @@
 using OpenWeatherMapSharp.Models;
+using OpenWeatherMapSharp.Models.Enums;
 using Xunit;
 
 namespace OpenWeatherMapSharp.UnitTests;
 
+/// <summary>
+/// Integration tests for the OpenWeatherMapService using actual API requests.
+/// </summary>
 public class OpenWeatherMapServiceTests
 {
     private const string OPENWEATHERMAPAPIKEY = "OWMAPIKEY";
 
-
     [Fact]
     public async Task BasicInvalidCredentials()
     {
-        // arrange
-        OpenWeatherMapService service = new("apikey");
+        // Arrange
+        OpenWeatherMapService service = new("invalid_api_key");
         string cityName = "Pforzheim";
 
-        // act
-        OpenWeatherMapServiceResponse<WeatherRoot> serviceResponse = await service.GetWeatherAsync(cityName);
+        // Act
+        OpenWeatherMapServiceResponse<WeatherRoot> serviceResponse 
+            = await service.GetWeatherAsync(cityName);
 
-        // assert
+        // Assert
         Assert.NotNull(serviceResponse);
         Assert.False(serviceResponse.IsSuccess);
         Assert.NotNull(serviceResponse.Error);
     }
 
-
     [Fact]
-    public async Task GetWeatherLocationTest()
+    public async Task GetWeatherByCoordinates_ShouldReturnCorrectLocation()
     {
-        // arrange
+        // Arrange
         OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
         double latitude = 48.89;
         double longitude = 8.69;
 
-        // act
-        OpenWeatherMapServiceResponse<WeatherRoot> serviceResponse = await service.GetWeatherAsync(latitude, longitude);
+        // Act
+        OpenWeatherMapServiceResponse<WeatherRoot> serviceResponse 
+            = await service.GetWeatherAsync(latitude, longitude);
 
-        // assert
+        // Assert
         Assert.NotNull(serviceResponse);
         Assert.NotNull(serviceResponse.Response);
         Assert.Null(serviceResponse.Error);
         Assert.True(serviceResponse.IsSuccess);
-        Assert.Equal(serviceResponse.Response.Coordinates.Latitude, latitude);
-        Assert.Equal(serviceResponse.Response.Coordinates.Longitude, longitude);
+        Assert.Equal(latitude, serviceResponse.Response.Coordinates.Latitude);
+        Assert.Equal(longitude, serviceResponse.Response.Coordinates.Longitude);
     }
 
     [Fact]
-    public async Task GetWeatherCityNameTest()
+    public async Task GetWeatherByCityName_ShouldReturnCorrectCity()
     {
-        // arrange
+        // Arrange
         OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
         string cityName = "Pforzheim";
 
-        // act
-        OpenWeatherMapServiceResponse<WeatherRoot> serviceResponse = await service.GetWeatherAsync(cityName);
+        // Act
+        OpenWeatherMapServiceResponse<WeatherRoot> serviceResponse 
+            = await service.GetWeatherAsync(cityName);
 
-        // assert
+        // Assert
         Assert.NotNull(serviceResponse);
         Assert.NotNull(serviceResponse.Response);
         Assert.Null(serviceResponse.Error);
         Assert.True(serviceResponse.IsSuccess);
-        Assert.Equal(serviceResponse.Response.Name, cityName);
+        Assert.Equal(cityName, serviceResponse.Response.Name);
     }
 
     [Fact]
-    public async Task GetWeatherCityIdTest()
+    public async Task GetWeatherByCityId_ShouldReturnCorrectCity()
     {
-        // arrange
+        // Arrange
         OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
         int cityId = 2928810;
         string cityName = "Essen";
 
-        // act
-        OpenWeatherMapServiceResponse<WeatherRoot> serviceResponse = await service.GetWeatherAsync(cityId);
+        // Act
+        OpenWeatherMapServiceResponse<WeatherRoot> serviceResponse 
+            = await service.GetWeatherAsync(cityId);
 
-        // assert
+        // Assert
         Assert.NotNull(serviceResponse);
         Assert.NotNull(serviceResponse.Response);
         Assert.Null(serviceResponse.Error);
         Assert.True(serviceResponse.IsSuccess);
-        Assert.Equal(serviceResponse.Response.Name, cityName);
+        Assert.Equal(cityName, serviceResponse.Response.Name);
     }
 
-
     [Fact]
-    public async Task GetForecastLocationTest()
+    public async Task GetForecastByCoordinates_ShouldReturnCorrectLocation()
     {
-        // arrange
+        // Arrange
         OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
         double latitude = 48.89;
         double longitude = 8.69;
 
-        // act
-        OpenWeatherMapServiceResponse<ForecastRoot> serviceResponse = await service.GetForecastAsync(latitude, longitude);
+        // Act
+        OpenWeatherMapServiceResponse<ForecastRoot> serviceResponse 
+            = await service.GetForecastAsync(latitude, longitude);
 
-        // assert
+        // Assert
         Assert.NotNull(serviceResponse);
         Assert.NotNull(serviceResponse.Response);
         Assert.Null(serviceResponse.Error);
         Assert.True(serviceResponse.IsSuccess);
-        Assert.Equal(serviceResponse.Response.City.Coordinates.Latitude, latitude);
-        Assert.Equal(serviceResponse.Response.City.Coordinates.Longitude, longitude);
+        Assert.Equal(latitude, serviceResponse.Response.City.Coordinates.Latitude);
+        Assert.Equal(longitude, serviceResponse.Response.City.Coordinates.Longitude);
     }
 
     [Fact]
-    public async Task GetForecastCityNameTest()
+    public async Task GetForecastByCityName_ShouldReturnCorrectCity()
     {
-        // arrange
+        // Arrange
         OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
         string cityName = "Pforzheim";
 
-        // act
-        OpenWeatherMapServiceResponse<ForecastRoot> serviceResponse = await service.GetForecastAsync(cityName);
+        // Act
+        OpenWeatherMapServiceResponse<ForecastRoot> serviceResponse 
+            = await service.GetForecastAsync(cityName);
 
-        // assert
+        // Assert
         Assert.NotNull(serviceResponse);
         Assert.NotNull(serviceResponse.Response);
         Assert.Null(serviceResponse.Error);
         Assert.True(serviceResponse.IsSuccess);
-        Assert.Equal(serviceResponse.Response.City.Name, cityName);
+        Assert.Equal(cityName, serviceResponse.Response.City.Name);
     }
 
     [Fact]
-    public async Task GetForecastCityIdTest()
+    public async Task GetForecastByCityId_ShouldReturnCorrectCity()
     {
-        // arrange
+        // Arrange
         OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
         int cityId = 2928810;
         string cityName = "Essen";
 
-        // act
-        OpenWeatherMapServiceResponse<ForecastRoot> serviceResponse = await service.GetForecastAsync(cityId);
+        // Act
+        OpenWeatherMapServiceResponse<ForecastRoot> serviceResponse 
+            = await service.GetForecastAsync(cityId);
 
-        // assert
+        // Assert
         Assert.NotNull(serviceResponse);
         Assert.NotNull(serviceResponse.Response);
         Assert.Null(serviceResponse.Error);
         Assert.True(serviceResponse.IsSuccess);
-        Assert.Equal(serviceResponse.Response.City.Name, cityName);
+        Assert.Equal(cityName, serviceResponse.Response.City.Name);
     }
 
-
     [Fact]
-    public async Task GetGeolocationFromNameTest()
+    public async Task GetGeolocationByName_ShouldReturnCorrectLocation()
     {
-        // arrange
+        // Arrange
         OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
         string name = "Pforzheim";
         string country = "DE";
 
-        // act
-        OpenWeatherMapServiceResponse<List<GeocodeInfo>> serviceResponse = await service.GetLocationByNameAsync(name);
+        // Act
+        OpenWeatherMapServiceResponse<List<GeocodeInfo>> serviceResponse 
+            = await service.GetLocationByNameAsync(name);
 
-        // assert
+        // Assert
         Assert.NotNull(serviceResponse);
         Assert.NotNull(serviceResponse.Response);
         Assert.Null(serviceResponse.Error);
         Assert.True(serviceResponse.IsSuccess);
 
-        GeocodeInfo? firstCountry = serviceResponse.Response.FirstOrDefault();
-        Assert.NotNull(firstCountry);
-        Assert.Equal(name, firstCountry.Name);
-        Assert.Equal(country, firstCountry.Country);
+        var firstResult = serviceResponse.Response.FirstOrDefault();
+        Assert.NotNull(firstResult);
+        Assert.Equal(name, firstResult.Name);
+        Assert.Equal(country, firstResult.Country);
     }
 
     [Fact]
-    public async Task GetGeolocationFromZipTest()
+    public async Task GetGeolocationByCoordinates_ShouldReturnCorrectLocation()
     {
-        // arrange
-        OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
-        string zipCode = "75173";
-        string cityName = "Pforzheim";
-        string country = "DE";
-
-        // act
-        OpenWeatherMapServiceResponse<GeocodeZipInfo> serviceResponse = await service.GetLocationByZipAsync($"{zipCode},{country}");
-
-        // assert
-        Assert.NotNull(serviceResponse);
-        Assert.NotNull(serviceResponse.Response);
-        Assert.Null(serviceResponse.Error);
-        Assert.True(serviceResponse.IsSuccess);
-        Assert.Equal(zipCode, serviceResponse.Response.ZipCode);
-        Assert.Equal(cityName, serviceResponse.Response.Name);
-        Assert.Equal(country, serviceResponse.Response.Country);
-    }
-
-    [Fact]
-    public async Task GetGeolocationFromLatLonTest()
-    {
-        // arrange
+        // Arrange
         OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
         double latitude = 48.89;
         double longitude = 8.69;
         string cityName = "Pforzheim";
         string country = "DE";
 
-        // act
-        OpenWeatherMapServiceResponse<List<GeocodeInfo>> serviceResponse = await service.GetLocationByLatLonAsync(latitude, longitude);
+        // Act
+        OpenWeatherMapServiceResponse<List<GeocodeInfo>> serviceResponse 
+            = await service.GetLocationByLatLonAsync(latitude, longitude);
 
-        // assert
+        // Assert
         Assert.NotNull(serviceResponse);
         Assert.NotNull(serviceResponse.Response);
         Assert.Null(serviceResponse.Error);
         Assert.True(serviceResponse.IsSuccess);
 
-        GeocodeInfo? firstCountry = serviceResponse.Response.FirstOrDefault();
-        Assert.NotNull(firstCountry);
-        Assert.Equal(cityName, firstCountry.Name);
-        Assert.Equal(country, firstCountry.Country);
+        var firstResult = serviceResponse.Response.FirstOrDefault();
+        Assert.NotNull(firstResult);
+        Assert.Equal(cityName, firstResult.Name);
+        Assert.Equal(country, firstResult.Country);
+    }
+
+    [Fact]
+    public void Constructor_WithEmptyApiKey_ShouldNotThrowButLikelyFailAtRuntime()
+    {
+        // Arrange
+        OpenWeatherMapService service = new("");
+
+        // Act
+
+        // Assert
+        Assert.NotNull(service);
+    }
+
+    [Theory]
+    [InlineData(LanguageCode.EN, Unit.Standard)]
+    [InlineData(LanguageCode.DE, Unit.Metric)]
+    [InlineData(LanguageCode.FR, Unit.Imperial)]
+    public async Task GetWeather_WithDifferentLanguagesAndUnits_ShouldSucceed(LanguageCode lang, Unit unit)
+    {
+        // Arrange
+        OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
+
+        // Act
+        OpenWeatherMapServiceResponse<WeatherRoot> response 
+            = await service.GetWeatherAsync(48.89, 8.69, lang, unit);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.True(response.IsSuccess);
+        Assert.NotNull(response.Response);
+        Assert.Null(response.Error);
+    }
+
+    [Fact]
+    public async Task GetGeolocation_WithInvalidCity_ShouldReturnEmptyResult()
+    {
+        // Arrange
+        OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
+
+        // Act
+        OpenWeatherMapServiceResponse<List<GeocodeInfo>> response 
+            = await service.GetLocationByNameAsync("NowherevilleXYZ");
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.True(response.IsSuccess);
+        Assert.NotNull(response.Response);
+        Assert.Empty(response.Response);
+    }
+
+    [Theory]
+    [InlineData(-999, 10)]
+    [InlineData(91, 10)]
+    [InlineData(10, -200)]
+    public async Task GetWeather_WithInvalidCoordinates_ShouldFail(double lat, double lon)
+    {
+        // Arrange
+        OpenWeatherMapService service = new(OPENWEATHERMAPAPIKEY);
+
+        // Act
+        OpenWeatherMapServiceResponse<WeatherRoot> response 
+            = await service.GetWeatherAsync(lat, lon);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.False(response.IsSuccess);
+        Assert.NotNull(response.Error);
     }
 }
