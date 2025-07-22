@@ -87,4 +87,49 @@ Panel weatherPanel = new(new Rows(weatherMarkupList))
 };
 AnsiConsole.Write(weatherPanel);
 
+// == AIR POLLUTION ==
+OpenWeatherMapServiceResponse<AirPolutionRoot> airPollutionResponse
+    = await openWeatherMapService.GetAirPolutionAsync(geolocation.Latitude, geolocation.Longitude);
+
+if (!airPollutionResponse.IsSuccess || airPollutionResponse.Response is not AirPolutionRoot airQuality || airQuality.Entries.Count == 0)
+{
+    AnsiConsole.MarkupLine("[bold red]Unfortunately I can't retrieve air pollution data. Please try again.[/]");
+    return;
+}
+
+AirPolutionEntry pollution = airQuality.Entries.First();
+
+// Map AQI to meaning
+string GetAqiMeaning(int aqi) => aqi switch
+{
+    1 => "[green]Good[/]",
+    2 => "[yellow]Fair[/]",
+    3 => "[orange1]Moderate[/]",
+    4 => "[red]Poor[/]",
+    5 => "[maroon]Very Poor[/]",
+    _ => "[grey]Unknown[/]"
+};
+
+// == AIR POLLUTION PANEL ==
+List<Markup> pollutionMarkupList =
+[
+    new($"[red]Air Quality Index (AQI): [/]{pollution.AQI.Index} ({GetAqiMeaning(pollution.AQI.Index)})"),
+    new("-----"),
+    new($"[red]PM2.5: [/]{pollution.Components.FineParticlesMatter:0.00} µg/m³"),
+    new($"[red]PM10: [/]{pollution.Components.CoarseParticulateMatter:0.00} µg/m³"),
+    new($"[red]O₃ (Ozone): [/]{pollution.Components.Ozone:0.00} µg/m³"),
+    new($"[red]NO₂ (Nitrogen Dioxide): [/]{pollution.Components.NitrogenDioxide:0.00} µg/m³"),
+    new($"[red]SO₂ (Sulfur Dioxide): [/]{pollution.Components.SulfurDioxide:0.00} µg/m³"),
+    new($"[red]CO (Carbon Monoxide): [/]{pollution.Components.CarbonMonoxide:0.00} µg/m³"),
+    new($"[red]NH₃ (Ammonia): [/]{pollution.Components.Ammonia:0.00} µg/m³")
+];
+
+Panel pollutionPanel = new(new Rows(pollutionMarkupList))
+{
+    Header = new PanelHeader("Air Pollution"),
+    Width = 120
+};
+AnsiConsole.Write(pollutionPanel);
+
+
 Console.ReadLine();
