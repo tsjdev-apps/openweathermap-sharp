@@ -2,32 +2,34 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>OpenWeatherMapSharp</Title>
-		<Version>3.1.4</Version>
+		<Version>4.0.0</Version>
 		<Authors>Thomas Sebastian Jensen</Authors>
 		<Company>tsjdev-apps.de</Company>
 		<Description>An unofficial .NET API wrapper for OpenWeatherMap.org</Description>
-		<Copyright>© Thomas Sebastian Jensen | 2017-2023</Copyright>
+		<Copyright>© Thomas Sebastian Jensen | 2017-2025</Copyright>
 		<PackageProjectUrl>https://github.com/tsjdev-apps/openweathermap-sharp</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/tsjdev-apps/openweathermap-sharp</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>OpenWeatherMap; Api; Mock; Wrapper; free; Weather</PackageTags>
 		<PackageReleaseNotes>
+			- Add Air Pollution endpoints
+			- Update NuGet packages
 			- Code improvements
-			- Add IconName to data model
-			- Add DateTime information to forcecast data model
 		</PackageReleaseNotes>
 		<NeutralLanguage>en</NeutralLanguage>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<None Include="icon.png" Pack="true" PackagePath="" />
+		<None Include="README.md" Pack="true" PackagePath="" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
-	  <PackageReference Include="System.Text.Json" Version="9.0.7" />
+		<PackageReference Include="System.Text.Json" Version="9.0.7" />
 	</ItemGroup>
 
 </Project>
