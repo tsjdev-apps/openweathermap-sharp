@@ -1,4 +1,5 @@
 using OpenWeatherMapSharp.Models;
+using Xunit;
 
 namespace OpenWeatherMapSharp.UnitTests;
 
