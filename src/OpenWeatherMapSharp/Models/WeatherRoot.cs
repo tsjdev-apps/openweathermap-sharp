@@ -116,21 +116,21 @@ namespace OpenWeatherMapSharp.Models
         /// </summary>
         [JsonIgnore]
         public string Icon 
-            => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}.png";
+            => $"https://openweathermap.org/img/wn/{WeatherInfos?[0]?.Icon}.png";
 
         /// <summary>
         /// Weather icon URL (2x resolution).
         /// </summary>
         [JsonIgnore]
         public string Icon2x 
-            => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}@2x.png";
+            => $"https://openweathermap.org/img/wn/{WeatherInfos?[0]?.Icon}@2x.png";
 
         /// <summary>
         /// Weather icon URL (4x resolution).
         /// </summary>
         [JsonIgnore]
         public string Icon4x 
-            => $"https://openweathermap.org/img/w/{WeatherInfos?[0]?.Icon}@4x.png";
+            => $"https://openweathermap.org/img/wn/{WeatherInfos?[0]?.Icon}@4x.png";
 
         /// <summary>
         /// Weather icon name.
