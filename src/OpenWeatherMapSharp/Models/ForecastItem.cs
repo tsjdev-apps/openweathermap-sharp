@@ -82,5 +82,33 @@ namespace OpenWeatherMapSharp.Models
         [JsonIgnore]
         public DateTime Date 
             => DateUnix.ToDateTime();
+
+        /// <summary>
+        /// Weather icon URL (default size).
+        /// </summary>
+        [JsonIgnore]
+        public string Icon
+            => $"https://openweathermap.org/img/wn/{WeatherInfos?[0]?.Icon}.png";
+
+        /// <summary>
+        /// Weather icon URL (2x resolution).
+        /// </summary>
+        [JsonIgnore]
+        public string Icon2x
+            => $"https://openweathermap.org/img/wn/{WeatherInfos?[0]?.Icon}@2x.png";
+
+        /// <summary>
+        /// Weather icon URL (4x resolution).
+        /// </summary>
+        [JsonIgnore]
+        public string Icon4x
+            => $"https://openweathermap.org/img/wn/{WeatherInfos?[0]?.Icon}@4x.png";
+
+        /// <summary>
+        /// Weather icon name.
+        /// </summary>
+        [JsonIgnore]
+        public string IconName
+            => WeatherInfos?[0]?.Icon;
     }
 }
