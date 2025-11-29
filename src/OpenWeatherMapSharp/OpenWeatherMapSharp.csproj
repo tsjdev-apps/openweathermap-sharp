@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>OpenWeatherMapSharp</Title>
-		<Version>4.1.0</Version>
+		<Version>4.2.0</Version>
 		<Authors>Thomas Sebastian Jensen</Authors>
 		<Company>tsjdev-apps.de</Company>
 		<Description>An unofficial .NET API wrapper for OpenWeatherMap.org</Description>
@@ -15,7 +15,7 @@
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>OpenWeatherMap; Api; Mock; Wrapper; free; Weather</PackageTags>
 		<PackageReleaseNotes>
-			- Add icon urls to ForecastItem
+			- Fix typos in Pollution API
 		</PackageReleaseNotes>
 		<NeutralLanguage>en</NeutralLanguage>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
