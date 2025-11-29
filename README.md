@@ -94,21 +94,21 @@ Task<OpenWeatherMapServiceResponse<List<GeocodeInfo>>> GetLocationByLatLonAsync(
 /// <summary>
 /// Retrieves current air pollution data for a specific location.
 /// </summary>
-Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionAsync(
+Task<OpenWeatherMapServiceResponse<AirPollutionRoot>> GetAirPollutionAsync(
     double latitude,
     double longitude);
 
 /// <summary>
 /// Retrieves forecasted air pollution data for the coming days for a specific location.
 /// </summary>
-Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionForecastAsync(
+Task<OpenWeatherMapServiceResponse<AirPollutionRoot>> GetAirPollutionForecastAsync(
     double latitude,
     double longitude);
 
 /// <summary>
 /// Retrieves historical air pollution data for a specific location and time range.
 /// </summary>
-Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionHistoryAsync(
+Task<OpenWeatherMapServiceResponse<AirPollutionRoot>> GetAirPollutionHistoryAsync(
     double latitude,
     double longitude,
     DateTime start,
