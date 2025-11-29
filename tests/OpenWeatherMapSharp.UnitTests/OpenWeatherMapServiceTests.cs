@@ -275,8 +275,8 @@ public class OpenWeatherMapServiceTests
         double longitude = 8.69;
 
         // Act
-        OpenWeatherMapServiceResponse<AirPolutionRoot> response =
-            await service.GetAirPolutionAsync(latitude, longitude);
+        OpenWeatherMapServiceResponse<AirPollutionRoot> response =
+            await service.GetAirPollutionAsync(latitude, longitude);
 
         // Assert
         Assert.NotNull(response);
@@ -298,8 +298,8 @@ public class OpenWeatherMapServiceTests
         double longitude = 8.69;
 
         // Act
-        OpenWeatherMapServiceResponse<AirPolutionRoot> response =
-            await service.GetAirPolutionForecastAsync(latitude, longitude);
+        OpenWeatherMapServiceResponse<AirPollutionRoot> response =
+            await service.GetAirPollutionForecastAsync(latitude, longitude);
 
         // Assert
         Assert.NotNull(response);
@@ -325,8 +325,8 @@ public class OpenWeatherMapServiceTests
         DateTime start = end.AddHours(-24);
 
         // Act
-        OpenWeatherMapServiceResponse<AirPolutionRoot> response =
-            await service.GetAirPolutionHistoryAsync(latitude, longitude, start, end);
+        OpenWeatherMapServiceResponse<AirPollutionRoot> response =
+            await service.GetAirPollutionHistoryAsync(latitude, longitude, start, end);
 
         // Assert
         Assert.NotNull(response);
