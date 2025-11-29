@@ -6,7 +6,7 @@ namespace OpenWeatherMapSharp.Models
     /// Represents the concentration values 
     /// of various air pollutants (in μg/m³).
     /// </summary>
-    public class AirPolutionComponents
+    public class AirPollutionComponents
     {
         /// <summary>
         /// Carbon monoxide concentration.

@@ -6,7 +6,7 @@ namespace OpenWeatherMapSharp.Models
     /// <summary>
     /// Root object representing the air quality response from the API.
     /// </summary>
-    public class AirPolutionRoot
+    public class AirPollutionRoot
     {
         /// <summary>
         /// Geographic coordinates of the measurement location.
@@ -18,6 +18,6 @@ namespace OpenWeatherMapSharp.Models
         /// List of air polution measurements.
         /// </summary>
         [JsonPropertyName("list")]
-        public List<AirPolutionEntry> Entries { get; set; }
+        public List<AirPollutionEntry> Entries { get; set; }
     }
 }

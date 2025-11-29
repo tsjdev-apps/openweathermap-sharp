@@ -88,16 +88,16 @@ Panel weatherPanel = new(new Rows(weatherMarkupList))
 AnsiConsole.Write(weatherPanel);
 
 // == AIR POLLUTION ==
-OpenWeatherMapServiceResponse<AirPolutionRoot> airPollutionResponse
-    = await openWeatherMapService.GetAirPolutionAsync(geolocation.Latitude, geolocation.Longitude);
+OpenWeatherMapServiceResponse<AirPollutionRoot> airPollutionResponse
+    = await openWeatherMapService.GetAirPollutionAsync(geolocation.Latitude, geolocation.Longitude);
 
-if (!airPollutionResponse.IsSuccess || airPollutionResponse.Response is not AirPolutionRoot airQuality || airQuality.Entries.Count == 0)
+if (!airPollutionResponse.IsSuccess || airPollutionResponse.Response is not AirPollutionRoot airQuality || airQuality.Entries.Count == 0)
 {
     AnsiConsole.MarkupLine("[bold red]Unfortunately I can't retrieve air pollution data. Please try again.[/]");
     return;
 }
 
-AirPolutionEntry pollution = airQuality.Entries.First();
+AirPollutionEntry pollution = airQuality.Entries.First();
 
 // Map AQI to meaning
 string GetAqiMeaning(int aqi) => aqi switch

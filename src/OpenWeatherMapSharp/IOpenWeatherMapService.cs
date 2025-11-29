@@ -128,7 +128,7 @@ namespace OpenWeatherMapSharp
         /// <param name="latitude">Latitude of the location.</param>
         /// <param name="longitude">Longitude of the location.</param>
         /// <returns>Current air pollution data wrapped in a service response.</returns>
-        Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionAsync(
+        Task<OpenWeatherMapServiceResponse<AirPollutionRoot>> GetAirPollutionAsync(
             double latitude,
             double longitude);
 
@@ -138,7 +138,7 @@ namespace OpenWeatherMapSharp
         /// <param name="latitude">Latitude of the location.</param>
         /// <param name="longitude">Longitude of the location.</param>
         /// <returns>Air pollution forecast data wrapped in a service response.</returns>
-        Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionForecastAsync(
+        Task<OpenWeatherMapServiceResponse<AirPollutionRoot>> GetAirPollutionForecastAsync(
             double latitude,
             double longitude);
 
@@ -150,7 +150,7 @@ namespace OpenWeatherMapSharp
         /// <param name="start">Start of the time range (UTC).</param>
         /// <param name="end">End of the time range (UTC).</param>
         /// <returns>Historical air pollution data wrapped in a service response.</returns>
-        Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionHistoryAsync(
+        Task<OpenWeatherMapServiceResponse<AirPollutionRoot>> GetAirPollutionHistoryAsync(
             double latitude,
             double longitude,
             DateTime start,

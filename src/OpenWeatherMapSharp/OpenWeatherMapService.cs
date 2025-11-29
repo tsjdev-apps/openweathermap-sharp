@@ -150,24 +150,24 @@ namespace OpenWeatherMapSharp
         }
 
         /// <inheritdoc/>
-        public async Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionAsync(double latitude, double longitude)
+        public async Task<OpenWeatherMapServiceResponse<AirPollutionRoot>> GetAirPollutionAsync(double latitude, double longitude)
         {
             string url = string.Format(Statics.AirPollutionCoordinatesUri, latitude, longitude, _apiKey);
-            return await HttpService.GetDataAsync<AirPolutionRoot>(url);
+            return await HttpService.GetDataAsync<AirPollutionRoot>(url);
         }
 
         /// <inheritdoc/>
-        public async Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionForecastAsync(double latitude, double longitude)
+        public async Task<OpenWeatherMapServiceResponse<AirPollutionRoot>> GetAirPollutionForecastAsync(double latitude, double longitude)
         {
             string url = string.Format(Statics.AirPollutionCoordinatesForecastUri, latitude, longitude, _apiKey);
-            return await HttpService.GetDataAsync<AirPolutionRoot>(url);
+            return await HttpService.GetDataAsync<AirPollutionRoot>(url);
         }
 
         /// <inheritdoc/>
-        public async Task<OpenWeatherMapServiceResponse<AirPolutionRoot>> GetAirPolutionHistoryAsync(double latitude, double longitude, DateTime start, DateTime end)
+        public async Task<OpenWeatherMapServiceResponse<AirPollutionRoot>> GetAirPollutionHistoryAsync(double latitude, double longitude, DateTime start, DateTime end)
         {
             string url = string.Format(Statics.AirPollutionCoordinatesHistoryUri, latitude, longitude, start.ToUnixTimestamp(), end.ToUnixTimestamp(), _apiKey);
-            return await HttpService.GetDataAsync<AirPolutionRoot>(url);
+            return await HttpService.GetDataAsync<AirPollutionRoot>(url);
         }
     }
 }

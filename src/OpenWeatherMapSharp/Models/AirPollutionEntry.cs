@@ -8,19 +8,19 @@ namespace OpenWeatherMapSharp.Models
     /// Represents a single entry of air quality data, 
     /// including AQI, components, and timestamp.
     /// </summary>
-    public class AirPolutionEntry
+    public class AirPollutionEntry
     {
         /// <summary>
         /// Main air quality index (AQI).
         /// </summary>
         [JsonPropertyName("main")]
-        public AirPolutionIndex AQI { get; set; }
+        public AirPollutionIndex AQI { get; set; }
 
         /// <summary>
         /// Concentrations of individual air components.
         /// </summary>
         [JsonPropertyName("components")]
-        public AirPolutionComponents Components { get; set; }
+        public AirPollutionComponents Components { get; set; }
 
         /// <summary>
         /// Timestamp of the measurement (Unix time in seconds).
